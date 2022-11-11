@@ -1,5 +1,5 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import { Box, Typography } from '@mui/material'
 
 const Header = () => {
@@ -16,9 +16,11 @@ const Header = () => {
             backgroundColor: '#9b59b6',
             color: 'white',
             height: '45px',
+            paddingLeft: '25px',
+            paddingRight: '25px'
         }}>
-            <Typography sx={{ fontSize: '22px', marginLeft: '25px' }}>Fitness Tracker</Typography>
-            <Typography onClick={onClickHandler} sx={{ marginRight: '25px' }}>Log Out</Typography>
+            <Typography sx={{ fontSize: '22px' }}>Fitness Tracker</Typography>
+            <Link style={{ textDecoration: 'none', color: 'white' }} to='/login'>Log Out</Link>
         </Box>
     )
 }
