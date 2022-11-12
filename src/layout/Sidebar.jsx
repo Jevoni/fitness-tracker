@@ -1,7 +1,8 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { Box } from '@mui/material'
 
-import SidebarCard from '../components/SidebarCard'
+import SidebarButton from '../components/SidebarButton'
 import ProfilePicture from '../components/ProfilePicture'
 
 const Sidebar = () => {
@@ -15,10 +16,10 @@ const Sidebar = () => {
             alignItems: 'center',
         }}>
             <ProfilePicture />
-            <SidebarCard>Summary</SidebarCard>
-            <SidebarCard>Weight Training</SidebarCard>
-            <SidebarCard>Cardio</SidebarCard>
-            <SidebarCard>Supplements</SidebarCard>
+            <SidebarButton>Summary</SidebarButton>
+            <SidebarButton>Weight Training</SidebarButton>
+            <SidebarButton>Cardio</SidebarButton>
+            <SidebarButton>Supplements</SidebarButton>
         </Box>
     )
 }

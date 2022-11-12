@@ -1,9 +1,11 @@
 import React from 'react'
-import { Box, Typography } from '@mui/material'
+import { Link } from 'react-router-dom'
+import { Box, Typography, Button } from '@mui/material'
 
 const SidebarCard = (props) => {
     return (
-        <Box sx={{
+
+        <Button sx={{
             width: '90%',
             height: '70px',
             backgroundColor: '#9b59b6',
@@ -14,10 +16,13 @@ const SidebarCard = (props) => {
             justifyContent: 'center',
             margin: '20px',
             borderRadius: '6px',
-            boxShadow: '0px 0px 2px 1px black'
+            boxShadow: '0px 0px 2px 1px black',
+            textTransform: 'none'
         }}>
             <Typography>{props.children}</Typography>
-        </Box>
+
+        </Button>
+
     )
 }
 
