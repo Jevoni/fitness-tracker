@@ -3,8 +3,8 @@
 This application allows for users to track their fitness journey by logging:
 <ul>
 <li>Weight Training Sessions</li>
--Cardio
--Supplements
+<li>Cardio</li>
+<li>Supplements</li>
 </ul>
 
 
