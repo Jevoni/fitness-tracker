@@ -1,10 +1,15 @@
 import React from 'react'
-import { Box, Typography, Button } from '@mui/material'
+import { useNavigate } from 'react-router-dom'
+import { Typography, Button } from '@mui/material'
 
-const SidebarCard = (props, { clickHandler }) => {
-    { console.log(clickHandler) }
+const SidebarCard = ({ value, text }) => {
+    const navigate = useNavigate()
+    const buttonClickHandler = (e) => {
+        navigate(`/${value}`)
+        console.log('Clicked')
+    }
     return (
-        <Button onClick={() => clickHandler} sx={{
+        <Button onClick={buttonClickHandler} sx={{
             width: '90%',
             height: '70px',
             backgroundColor: '#9b59b6',
@@ -18,7 +23,7 @@ const SidebarCard = (props, { clickHandler }) => {
             boxShadow: '0px 0px 2px 1px black',
             textTransform: 'none'
         }}>
-            <Typography>{props.children}</Typography>
+            <Typography>{text}</Typography>
         </Button>
 
     )
