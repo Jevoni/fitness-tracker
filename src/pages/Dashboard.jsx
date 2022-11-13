@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box } from '@mui/material'
+import { Box, Typography } from '@mui/material'
 
 import Header from '../layout/Header'
 import Sidebar from '../layout/Sidebar'
@@ -15,7 +15,9 @@ const Homepage = () => {
                 width: '100%'
             }}>
                 <Sidebar />
-                <Body>Summary</Body>
+                <Body>
+                    <Typography sx={{ textAlign: 'center', fontWeight: 'bold', fontSize: '20px' }}>Summary</Typography>
+                </Body>
             </Box>
         </Box>
     )

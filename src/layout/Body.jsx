@@ -5,7 +5,7 @@ const Body = (props) => {
     return (
         <Box sx={{
             backgroundColor: '#ecf0f1',
-            width: '88%'
+            width: '85%'
         }}>
             {props.children}
         </Box>
