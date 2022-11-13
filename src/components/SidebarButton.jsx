@@ -1,11 +1,10 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import { Box, Typography, Button } from '@mui/material'
 
-const SidebarCard = (props) => {
+const SidebarCard = (props, { clickHandler }) => {
+    { console.log(clickHandler) }
     return (
-
-        <Button sx={{
+        <Button onClick={() => clickHandler} sx={{
             width: '90%',
             height: '70px',
             backgroundColor: '#9b59b6',
@@ -20,7 +19,6 @@ const SidebarCard = (props) => {
             textTransform: 'none'
         }}>
             <Typography>{props.children}</Typography>
-
         </Button>
 
     )

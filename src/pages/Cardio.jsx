@@ -6,7 +6,7 @@ import Sidebar from '../layout/Sidebar'
 import Body from '../layout/Body'
 import Footer from '../layout/Footer'
 
-const Homepage = () => {
+const Cardio = () => {
     return (
         <Box>
             <Header />
@@ -15,10 +15,10 @@ const Homepage = () => {
                 width: '100%'
             }}>
                 <Sidebar />
-                <Body>Summary</Body>
+                <Body>Cardio</Body>
             </Box>
         </Box>
     )
 }
 
-export default Homepage
+export default Cardio

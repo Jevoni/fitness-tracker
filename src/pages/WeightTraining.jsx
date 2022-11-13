@@ -1,12 +1,14 @@
 import React from 'react'
-import { Box } from '@mui/material'
+import { Box, Typography } from '@mui/material'
 
 import Header from '../layout/Header'
 import Sidebar from '../layout/Sidebar'
 import Body from '../layout/Body'
 import Footer from '../layout/Footer'
 
-const Homepage = () => {
+import WorkoutLog from '../components/WorkoutLog'
+
+const WeightTraining = () => {
     return (
         <Box>
             <Header />
@@ -15,10 +17,13 @@ const Homepage = () => {
                 width: '100%'
             }}>
                 <Sidebar />
-                <Body>Summary</Body>
+                <Body>
+                    <Typography sx={{ textAlign: 'center', fontWeight: 'bold', fontSize: '20px' }}>Weight Training</Typography>
+                    <WorkoutLog />
+                </Body>
             </Box>
         </Box>
     )
 }
 
-export default Homepage
+export default WeightTraining
