@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Box, Typography, TextField, Button } from '@mui/material'
+import { Box, Typography, Button } from '@mui/material'
 
 const Login = () => {
     const navigate = useNavigate()
@@ -28,23 +28,17 @@ const Login = () => {
                 alignItems: 'center',
                 backgroundColor: '#9b59b6',
                 padding: '20px',
-                borderRadius: '10%',
+                borderRadius: '15px',
                 boxShadow: '0px 0px 3px 1px black',
             }}>
                 <Typography variant='h5' sx={{ textAlign: 'center', marginBottom: '30px' }}>Fitness Tracker</Typography>
                 <form onSubmit={onSubmitHandler} style={{ display: 'flex', flexDirection: 'column', width: '70%' }}>
-                    <TextField
-                        variant='filled'
-                        label='Email'
-                    />
-                    <TextField
-                        variant='filled'
-                        label='Password'
-                    />
+                    <input placeholder='Email' style={{ height: '35px', fontSize: '16px', marginBottom: '2px' }}></input>
+                    <input placeholder='Password' style={{ height: '35px', fontSize: '16px', marginTop: '2px' }}></input>
                     <Button variant='filled' style={{ marginTop: '20px', alignSelf: 'center', width: '30%', border: '1px solid black', textTransform: 'none' }} type="submit">Log In</Button>
                 </form>
                 <Typography style={{ marginTop: '15px' }}>Forgot Password?</Typography>
-                <Typography style={{ marginTop: '15px' }}>Dont have an account? <span style={{ color: 'black', fontWeight: 'bold' }}>Sign Up</span></Typography>
+                <Typography style={{ marginTop: '15px' }}>Dont have an account? <a href='/' style={{ color: 'black', fontWeight: 'bold', textDecorationLine: 'none' }}>Sign Up</a></Typography>
             </Box>
         </Box>
     )
