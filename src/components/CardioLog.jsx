@@ -1,7 +1,7 @@
 import React from 'react'
 import { Box, Typography } from '@mui/material'
 
-const SupplementsLog = () => {
+const CardioLog = () => {
     return (
         <Box sx={{
             height: '40px',
@@ -14,11 +14,11 @@ const SupplementsLog = () => {
             padding: '10px'
         }}>
             <Typography>Date: <input type='date'></input></Typography>
-            <Typography>Supplement: <input type='text'></input></Typography>
-            <Typography>Dossage: <input type='text'></input></Typography>
+            <Typography>Workout: <input type='text'></input></Typography>
+            <Typography>Duration: <input type='time'></input></Typography>
             <button style={{ backgroundColor: 'lightgreen' }}>ADD</button>
         </Box>
     )
 }
 
-export default SupplementsLog
+export default CardioLog
