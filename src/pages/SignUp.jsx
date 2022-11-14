@@ -39,7 +39,7 @@ const SignUp = () => {
                     <input type='password' placeholder='Confirm Password' style={{ height: '35px', fontSize: '15px', marginTop: '2px' }}></input>
                     <Button variant='filled' type="submit" style={{ fontWeight: 'bold', color: 'black', backgroundColor: '#dbc3e4', marginTop: '20px', alignSelf: 'center', width: '30%', border: '1px solid black', textTransform: 'none' }}>Sign Up</Button>
                 </form>
-                <Typography style={{ marginTop: '15px' }}>Have an account? <Link to='/login' style={{ color: 'black', fontWeight: 'bold', textDecorationLine: 'none' }}>Log In</Link></Typography>
+                <Typography style={{ marginTop: '15px' }}>Have an account? <Link to='/' style={{ color: 'black', fontWeight: 'bold', textDecorationLine: 'none' }}>Log In</Link></Typography>
             </Box>
         </Box>
     )

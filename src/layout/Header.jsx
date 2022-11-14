@@ -20,7 +20,7 @@ const Header = () => {
             paddingRight: '25px'
         }}>
             <Typography sx={{ fontSize: '22px' }}>Fitness Tracker</Typography>
-            <Link style={{ textDecoration: 'none', color: 'white' }} to='/login'>Log Out</Link>
+            <Link style={{ textDecoration: 'none', color: 'white' }} to='/'>Log Out</Link>
         </Box>
     )
 }

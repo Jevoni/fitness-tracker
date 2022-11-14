@@ -17,7 +17,7 @@ function App() {
         <Route exact path='/weights' element={<WeightTraining />} />
         <Route exact path='/cardio' element={<Cardio />} />
         <Route exact path='/supplements' element={<Supplements />} />
-        <Route exact path='/login' element={<Login />} />
+        <Route exact path='/' element={<Login />} />
         <Route exact path='/signup' element={<SignUp />} />
       </Routes>
     </Box>
