@@ -8,7 +8,7 @@ const Login = () => {
     const [email, setEmail] = useState('')
     const onSubmitHandler = (e) => {
         e.preventDefault()
-        navigate('/')
+        navigate('/summary')
     }
 
     return (

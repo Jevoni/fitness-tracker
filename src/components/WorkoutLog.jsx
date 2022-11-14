@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Typography } from '@mui/material'
+import { Box, Typography, Button } from '@mui/material'
 
 const WorkoutLog = () => {
     return (
@@ -17,7 +17,7 @@ const WorkoutLog = () => {
             <Typography>Workout: <input type='text'></input></Typography>
             <Typography>Reps: <input type='number'></input></Typography>
             <Typography>Sets: <input type='number'></input></Typography>
-            <button style={{ backgroundColor: 'lightgreen' }}>ADD</button>
+            <Button style={{ backgroundColor: 'lightgreen', border: '1px solid black', color: 'black', padding: '2px' }}>ADD</Button>
         </Box>
     )
 }

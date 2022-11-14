@@ -7,7 +7,7 @@ const SignUp = () => {
     const navigate = useNavigate()
     const onSubmitHandler = (e) => {
         e.preventDefault()
-        navigate('/')
+        navigate('/summary')
     }
 
     return (
@@ -37,7 +37,7 @@ const SignUp = () => {
                     <input type='email' placeholder='Email' style={{ height: '35px', fontSize: '15px', marginBottom: '2px', marginTop: '2px' }}></input>
                     <input type='password' placeholder='Password' style={{ height: '35px', fontSize: '15px', marginTop: '2px', marginBottom: '2px' }}></input>
                     <input type='password' placeholder='Confirm Password' style={{ height: '35px', fontSize: '15px', marginTop: '2px' }}></input>
-                    <Button variant='filled' style={{ fontWeight: 'bold', color: 'black', backgroundColor: '#dbc3e4', marginTop: '20px', alignSelf: 'center', width: '30%', border: '1px solid black', textTransform: 'none' }} type="submit">Sign Up</Button>
+                    <Button variant='filled' type="submit" style={{ fontWeight: 'bold', color: 'black', backgroundColor: '#dbc3e4', marginTop: '20px', alignSelf: 'center', width: '30%', border: '1px solid black', textTransform: 'none' }}>Sign Up</Button>
                 </form>
                 <Typography style={{ marginTop: '15px' }}>Have an account? <Link to='/login' style={{ color: 'black', fontWeight: 'bold', textDecorationLine: 'none' }}>Log In</Link></Typography>
             </Box>

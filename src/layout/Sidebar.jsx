@@ -15,7 +15,7 @@ const Sidebar = () => {
             alignItems: 'center',
         }}>
             <ProfilePicture />
-            <SidebarButton text={`Summary`} value={``} />
+            <SidebarButton text={`Summary`} value={`summary`} />
             <SidebarButton text={`Weight Training`} value={`weights`} />
             <SidebarButton text={`Cardio`} value={`cardio`} />
             <SidebarButton text={`Supplements`} value={`supplements`} />

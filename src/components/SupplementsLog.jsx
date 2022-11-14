@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Typography } from '@mui/material'
+import { Box, Typography, Button } from '@mui/material'
 
 const SupplementsLog = () => {
     return (
@@ -16,7 +16,7 @@ const SupplementsLog = () => {
             <Typography>Date: <input type='date'></input></Typography>
             <Typography>Supplement: <input type='text'></input></Typography>
             <Typography>Dossage: <input type='text'></input></Typography>
-            <button style={{ backgroundColor: 'lightgreen' }}>ADD</button>
+            <Button style={{ backgroundColor: 'lightgreen', border: '1px solid black', color: 'black', padding: '2px' }}>ADD</Button>
         </Box>
     )
 }
