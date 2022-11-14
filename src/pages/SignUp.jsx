@@ -3,9 +3,8 @@ import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 import { Box, Typography, Button } from '@mui/material'
 
-const Login = () => {
+const SignUp = () => {
     const navigate = useNavigate()
-    const [email, setEmail] = useState('')
     const onSubmitHandler = (e) => {
         e.preventDefault()
         navigate('/')
@@ -34,15 +33,16 @@ const Login = () => {
             }}>
                 <Typography variant='h5' sx={{ textAlign: 'center', marginBottom: '30px' }}>Fitness Tracker</Typography>
                 <form onSubmit={onSubmitHandler} style={{ display: 'flex', flexDirection: 'column', width: '70%' }}>
-                    <input type='email' placeholder='Email' style={{ height: '35px', fontSize: '15px', marginBottom: '2px' }}></input>
-                    <input type='password' placeholder='Password' style={{ height: '35px', fontSize: '15px', marginTop: '2px' }}></input>
-                    <Button variant='filled' style={{ fontWeight: 'bold', color: 'black', backgroundColor: '#dbc3e4', marginTop: '20px', alignSelf: 'center', width: '30%', border: '1px solid black', textTransform: 'none' }} type="submit">Log In</Button>
+                    <input type='email' placeholder='Full Name' style={{ height: '35px', fontSize: '15px', marginBottom: '2px' }}></input>
+                    <input type='email' placeholder='Email' style={{ height: '35px', fontSize: '15px', marginBottom: '2px', marginTop: '2px' }}></input>
+                    <input type='password' placeholder='Password' style={{ height: '35px', fontSize: '15px', marginTop: '2px', marginBottom: '2px' }}></input>
+                    <input type='password' placeholder='Confirm Password' style={{ height: '35px', fontSize: '15px', marginTop: '2px' }}></input>
+                    <Button variant='filled' style={{ fontWeight: 'bold', color: 'black', backgroundColor: '#dbc3e4', marginTop: '20px', alignSelf: 'center', width: '30%', border: '1px solid black', textTransform: 'none' }} type="submit">Sign Up</Button>
                 </form>
-                <Typography style={{ marginTop: '15px' }}>Forgot Password?</Typography>
-                <Typography style={{ marginTop: '15px' }}>Dont have an account? <Link to='/signup' style={{ color: 'black', fontWeight: 'bold', textDecorationLine: 'none' }}>Sign Up</Link></Typography>
+                <Typography style={{ marginTop: '15px' }}>Have an account? <Link to='/login' style={{ color: 'black', fontWeight: 'bold', textDecorationLine: 'none' }}>Log In</Link></Typography>
             </Box>
         </Box>
     )
 }
 
-export default Login
+export default SignUp
