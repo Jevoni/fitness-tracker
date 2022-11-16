@@ -33,7 +33,7 @@ const SignUp = () => {
             }}>
                 <Typography variant='h5' sx={{ textAlign: 'center', marginBottom: '30px' }}>Fitness Tracker</Typography>
                 <form onSubmit={onSubmitHandler} style={{ display: 'flex', flexDirection: 'column', width: '70%' }}>
-                    <input type='email' placeholder='Full Name' style={{ height: '35px', fontSize: '15px', marginBottom: '2px' }}></input>
+                    <input type='text' placeholder='Full Name' style={{ height: '35px', fontSize: '15px', marginBottom: '2px' }}></input>
                     <input type='email' placeholder='Email' style={{ height: '35px', fontSize: '15px', marginBottom: '2px', marginTop: '2px' }}></input>
                     <input type='password' placeholder='Password' style={{ height: '35px', fontSize: '15px', marginTop: '2px', marginBottom: '2px' }}></input>
                     <input type='password' placeholder='Confirm Password' style={{ height: '35px', fontSize: '15px', marginTop: '2px' }}></input>

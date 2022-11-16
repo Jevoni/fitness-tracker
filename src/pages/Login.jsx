@@ -6,8 +6,23 @@ import { Box, Typography, Button } from '@mui/material'
 const Login = () => {
     const navigate = useNavigate()
     const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+
+    const response = fetch("endpoint_url", {
+        method: "POST",
+        body: JSON.stringify({
+            email,
+            password
+        }),
+        headers: {
+            'X-Api-Key': API_KEY,
+            'Content-Type': 'application/json'
+        }
+    })
+
     const onSubmitHandler = (e) => {
         e.preventDefault()
+        response()
         navigate('/summary')
     }
 
@@ -34,8 +49,18 @@ const Login = () => {
             }}>
                 <Typography variant='h5' sx={{ textAlign: 'center', marginBottom: '30px' }}>Fitness Tracker</Typography>
                 <form onSubmit={onSubmitHandler} style={{ display: 'flex', flexDirection: 'column', width: '70%' }}>
-                    <input type='email' placeholder='Email' style={{ height: '35px', fontSize: '15px', marginBottom: '2px' }}></input>
-                    <input type='password' placeholder='Password' style={{ height: '35px', fontSize: '15px', marginTop: '2px' }}></input>
+                    <input
+                        type='email'
+                        placeholder='Email'
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        style={{ height: '35px', fontSize: '15px', marginBottom: '2px' }} />
+                    <input
+                        type='password'
+                        placeholder='Password'
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        style={{ height: '35px', fontSize: '15px', marginTop: '2px' }} />
                     <Button variant='filled' style={{ fontWeight: 'bold', color: 'black', backgroundColor: '#dbc3e4', marginTop: '20px', alignSelf: 'center', width: '30%', border: '1px solid black', textTransform: 'none' }} type="submit">Log In</Button>
                 </form>
                 <Typography style={{ marginTop: '15px' }}>Forgot Password?</Typography>
