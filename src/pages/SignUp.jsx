@@ -5,9 +5,34 @@ import { Box, Typography, Button } from '@mui/material'
 
 const SignUp = () => {
     const navigate = useNavigate()
+    const [firstName, setFirstName] = useState('')
+    const [lastName, setLastName] = useState('')
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+    const [confirmPassword, setConfirmPassword] = useState('')
+
+    const response = fetch("endpoint_url", {
+        method: 'POST',
+        body: JSON.stringify({
+            firstName,
+            lastName,
+            email,
+            password
+        }),
+        headers: {
+            'X-Api-Key': '',
+            'Content-Type': 'application/json'
+        }
+    });
+
     const onSubmitHandler = (e) => {
         e.preventDefault()
-        navigate('/summary')
+        if (password != confirmPassword) {
+            alert('Passwords do not match!')
+        } else {
+            response()
+            navigate('/summary')
+        }
     }
 
     return (
@@ -33,10 +58,31 @@ const SignUp = () => {
             }}>
                 <Typography variant='h5' sx={{ textAlign: 'center', marginBottom: '30px' }}>Fitness Tracker</Typography>
                 <form onSubmit={onSubmitHandler} style={{ display: 'flex', flexDirection: 'column', width: '70%' }}>
-                    <input type='text' placeholder='Full Name' style={{ height: '35px', fontSize: '15px', marginBottom: '2px' }}></input>
-                    <input type='email' placeholder='Email' style={{ height: '35px', fontSize: '15px', marginBottom: '2px', marginTop: '2px' }}></input>
-                    <input type='password' placeholder='Password' style={{ height: '35px', fontSize: '15px', marginTop: '2px', marginBottom: '2px' }}></input>
-                    <input type='password' placeholder='Confirm Password' style={{ height: '35px', fontSize: '15px', marginTop: '2px' }}></input>
+                    <input type='text'
+                        value={firstName}
+                        placeholder='First Name'
+                        onChange={(e) => setFirstName(e.target.value)}
+                        style={{ height: '35px', fontSize: '15px', marginBottom: '2px' }} />
+                    <input type='text'
+                        value={lastName}
+                        placeholder='Last Name'
+                        onChange={(e) => setLastName(e.target.value)}
+                        style={{ height: '35px', fontSize: '15px', marginBottom: '2px', marginTop: '2px' }} />
+                    <input type='email'
+                        value={email}
+                        placeholder='Email'
+                        onChange={(e) => setEmail(e.target.value)}
+                        style={{ height: '35px', fontSize: '15px', marginBottom: '2px', marginTop: '2px' }} />
+                    <input type='password'
+                        value={password}
+                        placeholder='Password'
+                        onChange={(e) => setPassword(e.target.value)}
+                        style={{ height: '35px', fontSize: '15px', marginTop: '2px', marginBottom: '2px' }} />
+                    <input type='password'
+                        value={confirmPassword}
+                        placeholder='Confirm Password'
+                        onChange={(e) => setConfirmPassword(e.target.value)}
+                        style={{ height: '35px', fontSize: '15px', marginTop: '2px' }} />
                     <Button variant='filled' type="submit" style={{ fontWeight: 'bold', color: 'black', backgroundColor: '#dbc3e4', marginTop: '20px', alignSelf: 'center', width: '30%', border: '1px solid black', textTransform: 'none' }}>Sign Up</Button>
                 </form>
                 <Typography style={{ marginTop: '15px' }}>Have an account? <Link to='/' style={{ color: 'black', fontWeight: 'bold', textDecorationLine: 'none' }}>Log In</Link></Typography>

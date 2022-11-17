@@ -15,14 +15,14 @@ const Login = () => {
             password
         }),
         headers: {
-            'X-Api-Key': API_KEY,
+            'X-Api-Key': '',
             'Content-Type': 'application/json'
         }
     })
 
     const onSubmitHandler = (e) => {
         e.preventDefault()
-        response()
+        response
         navigate('/summary')
     }
 
@@ -56,7 +56,7 @@ const Login = () => {
                         onChange={(e) => setEmail(e.target.value)}
                         style={{ height: '35px', fontSize: '15px', marginBottom: '2px' }} />
                     <input
-                        type='password'
+                        type='current-password'
                         placeholder='Password'
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
