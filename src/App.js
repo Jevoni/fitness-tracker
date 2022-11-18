@@ -1,5 +1,6 @@
 import { Route, Routes } from 'react-router-dom'
 import { Box, CssBaseline } from '@mui/material'
+import { AuthProvider } from './context/AuthContext';
 
 import Summary from './pages/Summary';
 import Login from './pages/Login';
@@ -12,14 +13,16 @@ function App() {
   return (
     <Box>
       <CssBaseline />
-      <Routes>
-        <Route exact path='/summary' element={<Summary />} />
-        <Route exact path='/weights' element={<WeightTraining />} />
-        <Route exact path='/cardio' element={<Cardio />} />
-        <Route exact path='/supplements' element={<Supplements />} />
-        <Route exact path='/' element={<Login />} />
-        <Route exact path='/signup' element={<SignUp />} />
-      </Routes>
+      <AuthProvider>
+        <Routes>
+          <Route exact path='/summary' element={<Summary />} />
+          <Route exact path='/weights' element={<WeightTraining />} />
+          <Route exact path='/cardio' element={<Cardio />} />
+          <Route exact path='/supplements' element={<Supplements />} />
+          <Route exact path='/' element={<Login />} />
+          <Route exact path='/signup' element={<SignUp />} />
+        </Routes>
+      </AuthProvider>
     </Box>
   );
 }

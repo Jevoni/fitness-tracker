@@ -11,28 +11,24 @@ const SignUp = () => {
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
 
-    const response = fetch("endpoint_url", {
-        method: 'POST',
-        body: JSON.stringify({
-            firstName,
-            lastName,
-            email,
-            password
-        }),
-        headers: {
-            'X-Api-Key': '',
-            'Content-Type': 'application/json'
-        }
-    });
-
-    const onSubmitHandler = (e) => {
+    const onSubmitHandler = async (e) => {
         e.preventDefault()
-        if (password != confirmPassword) {
-            alert('Passwords do not match!')
-        } else {
-            response()
-            navigate('/summary')
-        }
+
+        let response = await fetch("http://localhost:8000/api/token/", {
+            method: "POST",
+            body: JSON.stringify({
+                email,
+                password
+            }),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+
+        let data = await response.json()
+
+        console.log(`data: ${data}`)
+        navigate('/summary')
     }
 
     return (
@@ -71,16 +67,19 @@ const SignUp = () => {
                     <input type='email'
                         value={email}
                         placeholder='Email'
+                        autoComplete='username'
                         onChange={(e) => setEmail(e.target.value)}
                         style={{ height: '35px', fontSize: '15px', marginBottom: '2px', marginTop: '2px' }} />
                     <input type='password'
                         value={password}
                         placeholder='Password'
+                        autoComplete='new-password'
                         onChange={(e) => setPassword(e.target.value)}
                         style={{ height: '35px', fontSize: '15px', marginTop: '2px', marginBottom: '2px' }} />
                     <input type='password'
                         value={confirmPassword}
                         placeholder='Confirm Password'
+                        autoComplete='new-password'
                         onChange={(e) => setConfirmPassword(e.target.value)}
                         style={{ height: '35px', fontSize: '15px', marginTop: '2px' }} />
                     <Button variant='filled' type="submit" style={{ fontWeight: 'bold', color: 'black', backgroundColor: '#dbc3e4', marginTop: '20px', alignSelf: 'center', width: '30%', border: '1px solid black', textTransform: 'none' }}>Sign Up</Button>
