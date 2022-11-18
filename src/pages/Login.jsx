@@ -1,36 +1,14 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 import { Box, Typography, Button } from '@mui/material'
+import AuthContext from '../context/AuthContext'
 
 const Login = () => {
-    const navigate = useNavigate()
+    const { loginUser } = useContext(AuthContext)
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const authenticated = false
-
-    const onSubmitHandler = async (e) => {
-        e.preventDefault()
-        let response = await fetch("http://localhost:8000/api/token/", {
-            method: "POST",
-            body: JSON.stringify({
-                email,
-                password
-            }),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-
-        let data = await response.json()
-        console.log(`data: ${data}`)
-
-        if (authenticated) {
-            navigate('/summary')
-        } else {
-            navigate('/')
-        }
-    }
 
     return (
         <Box sx={{
@@ -54,9 +32,10 @@ const Login = () => {
                 boxShadow: '0px 0px 3px 1px black',
             }}>
                 <Typography variant='h5' sx={{ textAlign: 'center', marginBottom: '30px' }}>Fitness Tracker</Typography>
-                <form onSubmit={onSubmitHandler} style={{ display: 'flex', flexDirection: 'column', width: '70%' }}>
+                <form onSubmit={loginUser} style={{ display: 'flex', flexDirection: 'column', width: '70%' }}>
                     <input
                         type='email'
+                        name='email'
                         placeholder='Email'
                         value={email}
                         autoComplete='username'
@@ -64,6 +43,7 @@ const Login = () => {
                         style={{ height: '35px', fontSize: '15px', marginBottom: '2px' }} />
                     <input
                         type='password'
+                        name='password'
                         placeholder='Password'
                         value={password}
                         autoComplete='current-password'

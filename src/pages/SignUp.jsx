@@ -1,35 +1,15 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { Link } from 'react-router-dom'
-import { useNavigate } from 'react-router-dom'
 import { Box, Typography, Button } from '@mui/material'
+import AuthContext from '../context/AuthContext'
 
 const SignUp = () => {
-    const navigate = useNavigate()
+    const { loginUser } = useContext(AuthContext)
     const [firstName, setFirstName] = useState('')
     const [lastName, setLastName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
-
-    const onSubmitHandler = async (e) => {
-        e.preventDefault()
-
-        let response = await fetch("http://localhost:8000/api/token/", {
-            method: "POST",
-            body: JSON.stringify({
-                email,
-                password
-            }),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-
-        let data = await response.json()
-
-        console.log(`data: ${data}`)
-        navigate('/summary')
-    }
 
     return (
         <Box sx={{
@@ -53,30 +33,37 @@ const SignUp = () => {
                 boxShadow: '0px 0px 3px 1px black',
             }}>
                 <Typography variant='h5' sx={{ textAlign: 'center', marginBottom: '30px' }}>Fitness Tracker</Typography>
-                <form onSubmit={onSubmitHandler} style={{ display: 'flex', flexDirection: 'column', width: '70%' }}>
-                    <input type='text'
+                <form onSubmit={loginUser} style={{ display: 'flex', flexDirection: 'column', width: '70%' }}>
+                    <input
+                        type='text'
                         value={firstName}
                         placeholder='First Name'
                         onChange={(e) => setFirstName(e.target.value)}
                         style={{ height: '35px', fontSize: '15px', marginBottom: '2px' }} />
-                    <input type='text'
+                    <input
+                        type='text'
                         value={lastName}
                         placeholder='Last Name'
                         onChange={(e) => setLastName(e.target.value)}
                         style={{ height: '35px', fontSize: '15px', marginBottom: '2px', marginTop: '2px' }} />
-                    <input type='email'
+                    <input
+                        type='email'
+                        name='email'
                         value={email}
                         placeholder='Email'
                         autoComplete='username'
                         onChange={(e) => setEmail(e.target.value)}
                         style={{ height: '35px', fontSize: '15px', marginBottom: '2px', marginTop: '2px' }} />
-                    <input type='password'
+                    <input
+                        type='password'
+                        name='password'
                         value={password}
                         placeholder='Password'
                         autoComplete='new-password'
                         onChange={(e) => setPassword(e.target.value)}
                         style={{ height: '35px', fontSize: '15px', marginTop: '2px', marginBottom: '2px' }} />
-                    <input type='password'
+                    <input
+                        type='password'
                         value={confirmPassword}
                         placeholder='Confirm Password'
                         autoComplete='new-password'
