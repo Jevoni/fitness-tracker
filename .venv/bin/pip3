@@ -1,4 +1,4 @@
-#!/Users/jalenjohnson/Desktop/ReactPortfolio/fitness-tracker/.venv/bin/python3.9
+#!/Users/austins/Desktop/fitness-tracker/.venv/bin/python3.9
 # -*- coding: utf-8 -*-
 import re
 import sys

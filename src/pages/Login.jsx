@@ -15,7 +15,7 @@ const Login = () => {
             password
         }),
         headers: {
-            'X-Api-Key': API_KEY,
+            //'X-Api-Key': API_KEY,
             'Content-Type': 'application/json'
         }
     })
