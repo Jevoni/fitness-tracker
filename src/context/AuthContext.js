@@ -33,6 +33,7 @@ export const AuthProvider = ({ children }) => {
     }
 
     let contextData = {
+        user: user,
         loginUser: loginUser
     }
 
