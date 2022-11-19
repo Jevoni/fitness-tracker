@@ -23,11 +23,11 @@ export const AuthProvider = ({ children }) => {
 
         if (response.status === 200) {
             setAuthTokens(data)
+            navigate('/summary')
             // setUser(jwt_decode(data.access))
         } else {
             alert('Something went wrong!')
         }
-        navigate('/summary')
         const data = await response.json()
         console.log(data)
     }
