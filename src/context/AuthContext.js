@@ -1,6 +1,6 @@
-import { createContext, useState, useEffect }
-    from "react";
+import { createContext, useState } from "react";
 import { useNavigate } from 'react-router-dom'
+import jwt_decode from 'jwt-decode'
 
 const AuthContext = createContext()
 
@@ -20,6 +20,13 @@ export const AuthProvider = ({ children }) => {
             },
             body: JSON.stringify({ 'username': e.target.email.value, 'password': e.target.password.value })
         })
+
+        if (response.status === 200) {
+            setAuthTokens(data)
+            setUser(jwt_decode(data.access))
+        } else {
+            alert('Something went wrong!')
+        }
         navigate('/summary')
         const data = await response.json()
         console.log(data)
