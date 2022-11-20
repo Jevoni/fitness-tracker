@@ -1,12 +1,11 @@
 import React from 'react'
 import { Box } from '@mui/material'
 
+import styles from './styles/Body.module.css'
+
 const Body = (props) => {
     return (
-        <Box sx={{
-            backgroundColor: '#ecf0f1',
-            width: '85%'
-        }}>
+        <Box className={styles.body}>
             {props.children}
         </Box>
     )

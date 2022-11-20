@@ -8,17 +8,16 @@ import Footer from '../layout/Footer'
 
 import SupplementsLog from '../components/SupplementsLog'
 
+import styles from './styles/Supplements.module.css'
+
 const Supplements = () => {
     return (
         <Box>
             <Header />
-            <Box sx={{
-                display: 'flex',
-                width: '100%'
-            }}>
+            <Box className={`${styles['main-container']}`}>
                 <Sidebar />
                 <Body>
-                    <Typography sx={{ textAlign: 'center', fontWeight: 'bold', fontSize: '20px' }}>Supplements</Typography>
+                    <Typography className={`${styles['title']}`}>Supplements</Typography>
                     <SupplementsLog />
                 </Body>
             </Box>

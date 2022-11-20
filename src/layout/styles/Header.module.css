@@ -1,0 +1,24 @@
+.header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #9b59b6;
+    color: white;
+    height: 45px;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.header .app-name {
+    font-size: 22px
+}
+
+.header .log-out {
+    text-decoration: none;
+    color: white;
+}
+
+.header .log-out:hover {
+    cursor: pointer;
+}

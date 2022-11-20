@@ -4,21 +4,16 @@ import { Box } from '@mui/material'
 import SidebarButton from '../components/SidebarButton'
 import ProfilePicture from '../components/ProfilePicture'
 
+import styles from './styles/Sidebar.module.css'
+
 const Sidebar = () => {
     return (
-        <Box sx={{
-            width: '15%',
-            minHeight: '100vh',
-            backgroundColor: '#dbc3e4',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-        }}>
+        <Box className={styles.sidebar}>
             <ProfilePicture />
-            <SidebarButton text={`Summary`} value={`summary`} />
-            <SidebarButton text={`Weight Training`} value={`weights`} />
-            <SidebarButton text={`Cardio`} value={`cardio`} />
-            <SidebarButton text={`Supplements`} value={`supplements`} />
+            <SidebarButton text='Summary' value='summary' />
+            <SidebarButton text='Weight Training' value='weights' />
+            <SidebarButton text='Cardio' value='cardio' />
+            <SidebarButton text='Supplements' value='supplements' />
         </Box>
     )
 }

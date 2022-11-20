@@ -5,19 +5,19 @@ import Header from '../layout/Header'
 import Sidebar from '../layout/Sidebar'
 import Body from '../layout/Body'
 import Footer from '../layout/Footer'
+
 import CardioLog from '../components/CardioLog'
+
+import styles from './styles/Cardio.module.css'
 
 const Cardio = () => {
     return (
         <Box>
             <Header />
-            <Box sx={{
-                display: 'flex',
-                width: '100%'
-            }}>
+            <Box className={`${styles['main-container']}`}>
                 <Sidebar />
                 <Body>
-                    <Typography sx={{ textAlign: 'center', fontWeight: 'bold', fontSize: '20px' }}>Cardio</Typography>
+                    <Typography className={`${styles['title']}`}>Cardio</Typography>
                     <CardioLog />
                 </Body>
             </Box>
