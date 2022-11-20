@@ -8,17 +8,16 @@ import Footer from '../layout/Footer'
 
 import WorkoutLog from '../components/WorkoutLog'
 
+import styles from './styles/WeightTraining.module.css'
+
 const WeightTraining = () => {
     return (
         <Box>
             <Header />
-            <Box sx={{
-                display: 'flex',
-                width: '100%'
-            }}>
+            <Box className={`${styles['main-container']}`}>
                 <Sidebar />
                 <Body>
-                    <Typography sx={{ textAlign: 'center', fontWeight: 'bold', fontSize: '20px' }}>Weight Training</Typography>
+                    <Typography className={`${styles['title']}`}>Weight Training</Typography>
                     <WorkoutLog />
                 </Body>
             </Box>

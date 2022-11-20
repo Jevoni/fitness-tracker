@@ -1,26 +1,17 @@
-import React from 'react'
-import { useNavigate, Link } from 'react-router-dom'
+import React, { useContext } from 'react'
+import { Link } from 'react-router-dom'
 import { Box, Typography } from '@mui/material'
 
+import styles from './styles/Header.module.css'
+import AuthContext from '../context/AuthContext'
+
 const Header = () => {
-    const navigate = useNavigate()
-    const onClickHandler = () => {
-        navigate('/login')
-    }
+    const { logoutUser } = useContext(AuthContext)
+
     return (
-        <Box sx={{
-            display: 'flex',
-            flexDirection: 'row',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            backgroundColor: '#9b59b6',
-            color: 'white',
-            height: '45px',
-            paddingLeft: '25px',
-            paddingRight: '25px'
-        }}>
-            <Typography sx={{ fontSize: '22px' }}>Fitness Tracker</Typography>
-            <Link style={{ textDecoration: 'none', color: 'white' }} to='/'>Log Out</Link>
+        <Box className={styles.header}>
+            <Typography className={styles['app-name']}>Fitness Tracker</Typography>
+            <p className={styles['log-out']} onClick={logoutUser}>Log Out</p>
         </Box>
     )
 }

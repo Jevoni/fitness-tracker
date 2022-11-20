@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { Box, Typography, Button } from '@mui/material'
 import AuthContext from '../context/AuthContext'
 
-import styles from './Login.module.css'
+import styles from './styles/Login.module.css'
 
 const Login = () => {
     const { loginUser } = useContext(AuthContext)

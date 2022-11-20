@@ -20,7 +20,6 @@ const SidebarCard = ({ value, text }) => {
             justifyContent: 'center',
             margin: '20px',
             borderRadius: '6px',
-            // boxShadow: '0px 0px 2px 1px black',
             textTransform: 'none',
             border: '2px solid black'
         }}>
