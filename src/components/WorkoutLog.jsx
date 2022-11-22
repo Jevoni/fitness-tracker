@@ -3,14 +3,13 @@ import { Box, Typography, Button } from '@mui/material'
 
 import styles from './styles/WorkoutLog.module.css'
 
-const WorkoutLog = () => {
+const WorkoutLog = ({ workoutLog }) => {
     return (
         <Box className={styles['workout-log']}>
-            <Typography>Date: <input type='text'></input></Typography>
-            <Typography>Workout: <input type='text'></input></Typography>
-            <Typography>Reps: <input type='number'></input></Typography>
-            <Typography>Sets: <input type='number'></input></Typography>
-            <Button className={styles['button']}>ADD</Button>
+            <Typography>Date: {workoutLog.date}</Typography>
+            <Typography>Workout: {workoutLog.workout}</Typography>
+            <Typography>Reps: {workoutLog.reps}</Typography>
+            <Typography>Sets: {workoutLog.sets}</Typography>
         </Box>
     )
 }
