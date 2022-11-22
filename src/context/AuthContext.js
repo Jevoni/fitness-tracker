@@ -72,10 +72,12 @@ export const AuthProvider = ({ children }) => {
 
     const contextData = {
         user: user,
+        authTokens: authTokens,
         loginUser: loginUser,
         logoutUser: logoutUser
     }
 
+    //Updating authToken needs work || Problem: Token updates one more time after user logs out
     useEffect(() => {
         const fourMinutes = 1000 * 60 * 4
         const interval = setInterval(() => {
@@ -83,14 +85,8 @@ export const AuthProvider = ({ children }) => {
                 updateToken()
             }
             return clearInterval(interval)
-        }, 2000)
+        }, fourMinutes)
     }, [authTokens, loading])
-
-    useEffect(() => {
-        if (authTokens) {
-            setAuthTokens(null)
-        }
-    }, [authTokens])
 
     return (
         <AuthContext.Provider value={contextData}>

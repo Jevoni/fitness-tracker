@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { Box, Typography } from '@mui/material'
 
 import Header from '../layout/Header'
@@ -10,8 +10,10 @@ import WorkoutInput from '../components/WorkoutInput'
 import WorkoutLog from '../components/WorkoutLog'
 
 import styles from './styles/WeightTraining.module.css'
+import AuthContext from '../context/AuthContext'
 
 const WeightTraining = () => {
+    const { authTokens, user } = useContext(AuthContext)
     const [date, setDate] = useState()
     const [workout, setWorkout] = useState()
     const [reps, setReps] = useState()
@@ -29,9 +31,16 @@ const WeightTraining = () => {
         const response = await fetch('http://127.0.0.1:8000/api/create-weight/', {
             method: 'POST',
             headers: {
-                'Content-Type': 'applications/json'
+                'Content-Type': 'applications/json',
+                'Authorization': 'Bearer' + String(authTokens.access)
             },
-            body: JSON.stringify({ 'date': date, 'workout': workout, 'reps': reps, 'sets': sets })
+            body: JSON.stringify({
+                'user': user,
+                'date': date,
+                'workout': workout,
+                'reps': reps,
+                'sets': sets,
+            })
         })
     }
 
