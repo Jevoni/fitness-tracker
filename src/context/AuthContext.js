@@ -12,6 +12,7 @@ export const AuthProvider = ({ children }) => {
     const [authTokens, setAuthTokens] = useState(() => localStorage.getItem('authTokens') ? JSON.parse(localStorage.getItem('authTokens')) : null)
     const [user, setUser] = useState(() => localStorage.getItem('authTokens') ? jwt_decode(localStorage.getItem('authTokens')) : null)
     const [loading, setLoading] = useState(true)
+    const [isLoggedIn, setIsLoggedIn] = useState(false)
 
     const loginUser = async (e) => {
         e.preventDefault()
@@ -30,17 +31,22 @@ export const AuthProvider = ({ children }) => {
             setUser(jwt_decode(data.access))
             localStorage.setItem('authToken', JSON.stringify(data))
             navigate('/summary')
+            setIsLoggedIn(true)
         } else {
-            alert('Something went wrong!')
+            alert('User not found!')
         }
+
+        console.log('Logged in')
     }
 
     const logoutUser = () => {
+        localStorage.removeItem('authToken')
         setAuthTokens(null)
         setUser(null)
-        localStorage.removeItem('authToken')
         navigate('/')
-        console.log('clicked')
+        setIsLoggedIn(false)
+
+        console.log('Logged out')
     }
 
     const updateToken = async () => {
@@ -58,10 +64,10 @@ export const AuthProvider = ({ children }) => {
             setAuthTokens(data)
             setUser(jwt_decode(data.access))
             localStorage.setItem('authToken', JSON.stringify(data))
+            console.log('Updated token')
         } else {
             logoutUser()
         }
-        console.log('Updated token')
     }
 
     const contextData = {
@@ -70,14 +76,21 @@ export const AuthProvider = ({ children }) => {
         logoutUser: logoutUser
     }
 
-    // useEffect(() => {
-    //     let interval = setInterval(() => {
-    //         if (authTokens) {
-    //             updateToken()
-    //         }
-    //         return () => clearInterval(interval)
-    //     }, 2000)
-    // }, [authTokens, loading])
+    useEffect(() => {
+        const fourMinutes = 1000 * 60 * 4
+        const interval = setInterval(() => {
+            if (authTokens) {
+                updateToken()
+            }
+            return clearInterval(interval)
+        }, 2000)
+    }, [authTokens, loading])
+
+    useEffect(() => {
+        if (authTokens) {
+            setAuthTokens(null)
+        }
+    }, [authTokens])
 
     return (
         <AuthContext.Provider value={contextData}>

@@ -6,7 +6,6 @@ const SidebarCard = ({ value, text }) => {
     const navigate = useNavigate()
     const buttonClickHandler = (e) => {
         navigate(`/${value}`)
-        console.log('Clicked')
     }
     return (
         <Button onClick={buttonClickHandler} sx={{

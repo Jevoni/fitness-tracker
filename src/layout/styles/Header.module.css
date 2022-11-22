@@ -17,6 +17,10 @@
 .header .log-out {
     text-decoration: none;
     color: white;
+    background: none !important;
+    border: none;
+    padding: 0 !important;
+    font-size: 15px;
 }
 
 .header .log-out:hover {

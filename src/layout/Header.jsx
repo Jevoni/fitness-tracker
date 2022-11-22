@@ -11,7 +11,7 @@ const Header = () => {
     return (
         <Box className={styles.header}>
             <Typography className={styles['app-name']}>Fitness Tracker</Typography>
-            <p className={styles['log-out']} onClick={logoutUser}>Log Out</p>
+            <button className={styles['log-out']} onClick={logoutUser}>Log Out</button>
         </Box>
     )
 }
