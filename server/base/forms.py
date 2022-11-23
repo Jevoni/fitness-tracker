@@ -4,14 +4,14 @@ from .models import Weight,Cardio,Supplement
 class WeightForm(ModelForm):
     class Meta:
         model = Weight
-        fields = ['date','name','reps','sets']
+        fields = "__all__"
 
 class CardioForm(ModelForm):
     class Meta:
         model = Cardio
-        fields = ['date','name','duration']
+        fields = "__all__"
 
 class SupplementForm(ModelForm):
     class Meta:
         model = Supplement
-        fields = ['date','name','dossage']
+        fields = "__all__"
