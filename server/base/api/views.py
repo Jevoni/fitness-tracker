@@ -39,12 +39,11 @@ def getRoutes(request):
 
 
 #weight views
-@api_view(['GET','POST',])
+@api_view(['GET','POST'])
 def weight(request):
     weights = Weight.objects.all()
     serializer = WeightSerializer(weights, many = True)
     if request.method == "POST":
-        print(request.data)
         form = WeightForm(request.data)
         if form.is_valid():
             form.save()
@@ -67,7 +66,7 @@ def modifyWeight(request,pk):
 #     weights.delete()
 
 @api_view(['GET','POST',])
-def weight(request):
+def cardios(request):
     cardios = Cardio.objects.all()
     serializer = CardioSerializer(cardios, many = True)
     if request.method == "POST":
