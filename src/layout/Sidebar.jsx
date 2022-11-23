@@ -6,9 +6,9 @@ import ProfilePicture from '../components/ProfilePicture'
 
 import styles from './styles/Sidebar.module.css'
 
-const Sidebar = () => {
+const Sidebar = (display) => {
     return (
-        <Box className={styles.sidebar}>
+        <Box className={styles.sidebar} display={display}>
             <ProfilePicture />
             <SidebarButton text='Summary' value='summary' />
             <SidebarButton text='Weight Training' value='weights' />
