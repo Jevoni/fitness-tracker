@@ -16,7 +16,7 @@ const WeightTraining = () => {
     const [workout, setWorkout] = useState()
     const [reps, setReps] = useState()
     const [sets, setSets] = useState()
-    const [totalWorkouts, setTotalWorkouts] = useState({})
+    const [totalWorkouts, setTotalWorkouts] = useState(null)
     const [response, setResponse] = useState(null)
 
     useEffect(() => {
@@ -49,7 +49,7 @@ const WeightTraining = () => {
         })
 
         if (response.status === 201) {
-            console.log('Workout Submitted')
+            console.log('Workout Submitted!')
         }
 
         const getWorkoutLog = async () => {
@@ -60,7 +60,61 @@ const WeightTraining = () => {
         getWorkoutLog()
     }
 
-    if (!totalWorkouts.length && response?.status !== 200) return (
+    const deleteWorkout = async (e) => {
+        const response = await fetch('http://127.0.0.1:8000/api/weight/', {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer' + String(authTokens?.access)
+            },
+            body: JSON.stringify({
+                'date': date,
+                'name': workout,
+                'reps': reps,
+                'sets': sets,
+            })
+        })
+
+        if (response.status === 201 || 200) {
+            console.log('Workout Deleted!')
+        }
+
+        const getWorkoutLog = async () => {
+            const response = await fetch('http://127.0.0.1:8000/api/weight/')
+            const data = await response.json()
+            setTotalWorkouts(data)
+        }
+        getWorkoutLog()
+    }
+
+    const editWorkout = async () => {
+        const response = await fetch('http://127.0.0.1:8000/api/weight/', {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer' + String(authTokens?.access)
+            },
+            body: JSON.stringify({
+                'date': date,
+                'name': workout,
+                'reps': reps,
+                'sets': sets,
+            })
+        })
+
+        if (response.status === 201 || 200) {
+            console.log('Workout Deleted!')
+        }
+
+        const getWorkoutLog = async () => {
+            const response = await fetch('http://127.0.0.1:8000/api/weight/')
+            const data = await response.json()
+            setTotalWorkouts(data)
+        }
+        getWorkoutLog()
+    }
+
+    if (!totalWorkouts?.length && response?.status !== 200) return (
         <Box className={styles['loading-spinner-container']}>
             <LoadingSpinner />
         </Box>
@@ -77,7 +131,14 @@ const WeightTraining = () => {
                 onSubmitHandler={onSubmitHandler}
             />
             <Box className={styles['workout-log-container']}>
-                {totalWorkouts?.map((workoutLog) => <WorkoutLog key={workoutLog.id} workoutLog={workoutLog} />)}
+                {totalWorkouts?.map((workoutLog) =>
+                    <WorkoutLog
+                        key={workoutLog.id}
+                        workoutLog={workoutLog}
+                        editWorkout={editWorkout}
+                        deleteWorkout={deleteWorkout}
+                    />
+                )}
             </Box>
         </Body>
     )

@@ -17,7 +17,8 @@ const Summary = () => {
     return (
         <Body sx={{ backgroundColor: 'white' }}>
             <Typography className={`${styles['title']}`}>Summary</Typography>
-            <div>
+            <Typography variant='h2' textAlign='center'> Coming Soon...</Typography>
+            {/* <div>
                 <Typography sx={{ fontWeight: 'bold', marginLeft: '5px' }}>Recent weight training logs: </Typography>
                 <Box sx={{ border: '1px solid black', margin: '5px', backgroundColor: 'white', height: '150px' }}>
                 </Box>
@@ -31,7 +32,7 @@ const Summary = () => {
                 <Typography sx={{ fontWeight: 'bold', marginLeft: '5px' }}>Recent supplements logs:</Typography>
                 <Box sx={{ border: '1px solid black', margin: '5px', backgroundColor: 'white', height: '150px' }}>
                 </Box>
-            </div>
+            </div> */}
         </Body>
     )
 }
