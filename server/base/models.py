@@ -15,9 +15,6 @@ class User(AbstractUser):
 
     REQUIRED_FIELDS = []
 
-    def __str__(self):
-        return self.name
-
 class Weight(models.Model):
 
     user = models.ForeignKey(User,on_delete= models.CASCADE, default=1)
@@ -33,7 +30,7 @@ class Weight(models.Model):
         return self.name
 
 class Cardio(models.Model):
-
+    
     user = models.ForeignKey(User, on_delete= models.CASCADE)
     date = models.DateField()
     name = models.CharField(max_length=200)
