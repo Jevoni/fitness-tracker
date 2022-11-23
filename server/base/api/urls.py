@@ -15,5 +15,12 @@ urlpatterns = [
 
     path('weight/',views.weight),
     path('weight/<str:pk>/',views.modifyWeight),
+
+    path('cardio/',views.cardio),
+    path('cardio/<str:pk>/',views.modifyCardio),
+
+    path('supplement/',views.supplement),
+    path('supplement/<str:pk>/',views.modifySupplement),
+    
     # path('create-weight/',createWeight.as_view(), name = 'create-weight'),
 ]
