@@ -1,16 +1,17 @@
 import React from 'react'
-import { Box, Typography } from '@mui/material'
+import { Box, Typography, Button } from '@mui/material'
 
-const SupplementsLog = () => {
+import styles from './styles/Supplements.module.css'
+
+const SupplementsInput = () => {
     return (
         <Box className={styles['supplements-log']}>
-            <Button className={styles['button-remove']}>Remove</Button>
-            <Button className={styles['button-edit']}>Edit</Button>
             <Typography>Date: <input type='date'></input></Typography>
             <Typography>Supplement: <input type='text'></input></Typography>
             <Typography>Dossage: <input type='text'></input></Typography>
+            <Button className={styles['button-add']}>Add</Button>
         </Box>
     )
 }
 
-export default SupplementsLog
+export default SupplementsInput

@@ -9,13 +9,26 @@
     padding: 10px;
 }
 
-.supplements-log .button {
+.supplements-log .button-add {
     background-color: lightgreen;
+    text-transform: none;
     border: 1px solid black;
     color: black;
     padding: 2px;
 }
 
-.supplements-log .button:hover {
+.supplements-log .button-add:hover {
     background-color: lightgreen;
+}
+
+.supplements-log .button-remove {
+    background-color: lightcoral;
+    text-transform: none;
+    border: 1px solid black;
+    color: black;
+    padding: 2px;
+}
+
+.supplements-log .button-remove:hover {
+    background-color: lightcoral;
 }

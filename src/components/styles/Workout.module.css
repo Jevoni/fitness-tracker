@@ -1,4 +1,4 @@
-.cardio-log {
+.workout-log {
     height: 40px;
     margin: 10px;
     background-color: white;
@@ -9,13 +9,26 @@
     padding: 10px;
 }
 
-.cardio-log .button {
+.workout-log .button-add {
     background-color: lightgreen;
+    text-transform: none;
     border: 1px solid black;
     color: black;
     padding: 2px;
 }
 
-.cardio-log .button:hover {
+.workout-log .button-add:hover {
     background-color: lightgreen;
+}
+
+.workout-log .button-remove {
+    background-color: lightcoral;
+    text-transform: none;
+    border: 1px solid black;
+    color: black;
+    padding: 2px;
+}
+
+.workout-log .button-remove:hover {
+    background-color: lightcoral;
 }
