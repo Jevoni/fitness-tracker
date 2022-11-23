@@ -21,7 +21,7 @@ const WeightTraining = () => {
 
     useEffect(() => {
         const getWorkoutLog = async () => {
-            const response = await fetch('http://127.0.0.1:8000/api/create-weight/')
+            const response = await fetch('http://127.0.0.1:8000/api/weight/')
             const data = await response.json()
             setResponse(response)
             setTotalWorkouts(data)
@@ -34,11 +34,11 @@ const WeightTraining = () => {
     const onSubmitHandler = async (e) => {
         e.preventDefault()
 
-        const response = await fetch('http://127.0.0.1:8000/api/create-weight/', {
+        const response = await fetch('http://127.0.0.1:8000/api/weight/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': 'Bearer' + String(authTokens.access)
+                'Authorization': 'Bearer' + String(authTokens?.access)
             },
             body: JSON.stringify({
                 'date': date,
@@ -53,7 +53,7 @@ const WeightTraining = () => {
         }
 
         const getWorkoutLog = async () => {
-            const response = await fetch('http://127.0.0.1:8000/api/create-weight/')
+            const response = await fetch('http://127.0.0.1:8000/api/weight/')
             const data = await response.json()
             setTotalWorkouts(data)
         }
