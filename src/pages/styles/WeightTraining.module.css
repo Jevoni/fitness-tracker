@@ -1,11 +1,19 @@
-.main-container {
-    display: flex;
-    width: 100%;
-}
-
-.main-container .title {
+.title {
     font-weight: bold;
     font-size: 20px;
     width: 100%;
     text-align: center;
+}
+
+.workout-log-container {
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.loading-spinner-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+    width: 85%;
 }

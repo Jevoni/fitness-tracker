@@ -7,16 +7,13 @@ from django.contrib.auth.models import AbstractUser
 
 
 class User(AbstractUser):
-
+    # pass
     name = models.CharField(max_length=200, null=True)
     email = models.EmailField(unique=True)
 
     USERNAME_FIELD = 'email'
 
     REQUIRED_FIELDS = []
-
-    def __str__(self):
-        return self.name
 
 class Weight(models.Model):
 

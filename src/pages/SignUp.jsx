@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Box, Typography, Button } from '@mui/material'
 import AuthContext from '../context/AuthContext'
@@ -6,12 +6,17 @@ import AuthContext from '../context/AuthContext'
 import styles from './styles/SignUp.module.css'
 
 const SignUp = () => {
-    const { loginUser } = useContext(AuthContext)
+    const { loginUser, setIsHome } = useContext(AuthContext)
     const [firstName, setFirstName] = useState('')
     const [lastName, setLastName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
+
+    useEffect(() => {
+        setIsHome(false)
+        console.log('useEffect (SignUp)')
+    }, [])
 
     return (
         <Box className={`${styles['page']}`}>

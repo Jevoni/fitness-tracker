@@ -18,6 +18,8 @@ const SidebarCard = ({ value, text }) => {
             alignItems: 'center',
             justifyContent: 'center',
             margin: '20px',
+            marginLeft: '12px',
+            marginRight: '12px',
             borderRadius: '6px',
             textTransform: 'none',
             border: '2px solid black'

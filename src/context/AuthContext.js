@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect, useRef } from "react";
 import { useNavigate } from 'react-router-dom'
 import jwt_decode from 'jwt-decode'
 
@@ -7,12 +7,15 @@ const AuthContext = createContext()
 export default AuthContext
 
 export const AuthProvider = ({ children }) => {
+    const authTokenRef = useRef()
     const navigate = useNavigate()
 
     const [authTokens, setAuthTokens] = useState(() => localStorage.getItem('authTokens') ? JSON.parse(localStorage.getItem('authTokens')) : null)
     const [user, setUser] = useState(() => localStorage.getItem('authTokens') ? jwt_decode(localStorage.getItem('authTokens')) : null)
     const [loading, setLoading] = useState(true)
-    const [isLoggedIn, setIsLoggedIn] = useState(false)
+    const [isHome, setIsHome] = useState(null)
+
+    authTokenRef.current = authTokens
 
     const loginUser = async (e) => {
         e.preventDefault()
@@ -31,12 +34,10 @@ export const AuthProvider = ({ children }) => {
             setUser(jwt_decode(data.access))
             localStorage.setItem('authToken', JSON.stringify(data))
             navigate('/summary')
-            setIsLoggedIn(true)
+            console.log('Logged in')
         } else {
             alert('User not found!')
         }
-
-        console.log('Logged in')
     }
 
     const logoutUser = () => {
@@ -44,7 +45,6 @@ export const AuthProvider = ({ children }) => {
         setAuthTokens(null)
         setUser(null)
         navigate('/')
-        setIsLoggedIn(false)
 
         console.log('Logged out')
     }
@@ -72,16 +72,17 @@ export const AuthProvider = ({ children }) => {
 
     const contextData = {
         user: user,
-        authTokens: authTokens,
+        authTokens: authTokenRef.current,
+        isHome: isHome,
+        setIsHome: setIsHome,
         loginUser: loginUser,
         logoutUser: logoutUser
     }
 
-    //Updating authToken needs work || Problem: Token updates one more time after user logs out
     useEffect(() => {
         const fourMinutes = 1000 * 60 * 4
         const interval = setInterval(() => {
-            if (authTokens) {
+            if (authTokenRef.current) {
                 updateToken()
             }
             return clearInterval(interval)

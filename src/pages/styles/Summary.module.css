@@ -1,9 +1,4 @@
-.main-container {
-    display: flex;
-    width: 100%;
-}
-
-.main-container .title {
+.title {
     font-weight: bold;
     font-size: 20px;
     width: 100%;

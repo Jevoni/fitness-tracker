@@ -1,67 +1,85 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import { Box, Typography } from '@mui/material'
+import AuthContext from '../context/AuthContext'
 
-import Header from '../layout/Header'
-import Sidebar from '../layout/Sidebar'
 import Body from '../layout/Body'
-import Footer from '../layout/Footer'
 
 import WorkoutInput from '../components/WorkoutInput'
 import WorkoutLog from '../components/WorkoutLog'
+import LoadingSpinner from '../components/LoadingSpinner'
 
 import styles from './styles/WeightTraining.module.css'
-import AuthContext from '../context/AuthContext'
 
 const WeightTraining = () => {
-    const { authTokens, user } = useContext(AuthContext)
+    const { setIsHome, authTokens } = useContext(AuthContext)
     const [date, setDate] = useState()
     const [workout, setWorkout] = useState()
     const [reps, setReps] = useState()
     const [sets, setSets] = useState()
-    const [workoutLog, setWorkoutLog] = useState({})
+    const [totalWorkouts, setTotalWorkouts] = useState({})
+    const [response, setResponse] = useState(null)
 
-    const buttonHandler = async () => {
-        setWorkoutLog({
-            date,
-            workout,
-            reps,
-            sets,
-        })
+    useEffect(() => {
+        const getWorkoutLog = async () => {
+            const response = await fetch('http://127.0.0.1:8000/api/create-weight/')
+            const data = await response.json()
+            setResponse(response)
+            setTotalWorkouts(data)
+        }
+        getWorkoutLog()
+        setIsHome(true)
+        console.log('useEffect (WeightTraining)')
+    }, [])
+
+    const onSubmitHandler = async (e) => {
+        e.preventDefault()
 
         const response = await fetch('http://127.0.0.1:8000/api/create-weight/', {
             method: 'POST',
             headers: {
-                'Content-Type': 'applications/json',
+                'Content-Type': 'application/json',
                 'Authorization': 'Bearer' + String(authTokens.access)
             },
             body: JSON.stringify({
-                'user': user,
                 'date': date,
-                'workout': workout,
+                'name': workout,
                 'reps': reps,
                 'sets': sets,
             })
         })
+
+        if (response.status === 201) {
+            console.log('Workout Submitted')
+        }
+
+        const getWorkoutLog = async () => {
+            const response = await fetch('http://127.0.0.1:8000/api/create-weight/')
+            const data = await response.json()
+            setTotalWorkouts(data)
+        }
+        getWorkoutLog()
     }
 
-    return (
-        <Box>
-            <Header />
-            <Box className={`${styles['main-container']}`}>
-                <Sidebar />
-                <Body>
-                    <Typography className={`${styles['title']}`}>Weight Training</Typography>
-                    <WorkoutInput
-                        setDate={setDate}
-                        setWorkout={setWorkout}
-                        setReps={setReps}
-                        setSets={setSets}
-                        buttonHandler={buttonHandler}
-                    />
-                    <WorkoutLog workoutLog={workoutLog} />
-                </Body>
-            </Box>
+    if (!totalWorkouts.length && response?.status !== 200) return (
+        <Box className={styles['loading-spinner-container']}>
+            <LoadingSpinner />
         </Box>
+    )
+
+    return (
+        <Body>
+            <Typography className={`${styles['title']}`}>Weight Training</Typography>
+            <WorkoutInput
+                setDate={setDate}
+                setWorkout={setWorkout}
+                setReps={setReps}
+                setSets={setSets}
+                onSubmitHandler={onSubmitHandler}
+            />
+            <Box className={styles['workout-log-container']}>
+                {totalWorkouts?.map((workoutLog) => <WorkoutLog key={workoutLog.id} workoutLog={workoutLog} />)}
+            </Box>
+        </Body>
     )
 }
 
