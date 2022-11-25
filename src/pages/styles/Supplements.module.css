@@ -4,3 +4,16 @@
     width: 100%;
     text-align: center;
 }
+
+.supplements-log-container {
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.loading-spinner-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+    width: 85%;
+}
