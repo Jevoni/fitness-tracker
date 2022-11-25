@@ -11,7 +11,7 @@ const Summary = () => {
 
     useEffect(() => {
         setIsHome(true)
-        console.log('useEffect (Summary)')
+        console.log('Summary (useEffect)')
     }, [])
 
     return (

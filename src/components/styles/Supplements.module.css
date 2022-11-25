@@ -32,3 +32,17 @@
 .supplements-log .button-remove:hover {
     background-color: lightcoral;
 }
+
+.supplements-log .button-edit {
+    background-color: orange;
+    text-transform: none;
+    border: 1px solid black;
+    color: black;
+    padding: 2px;
+    margin-left: 2px;
+
+}
+
+.supplements-log .button-edit:hover {
+    background-color: orange;
+}
