@@ -10,9 +10,9 @@ const WorkoutLog = ({ workoutLog, setTotalWorkouts }) => {
     const [sets, setSets] = useState(workoutLog.sets)
     const [edit, setEdit] = useState(false)
 
-    useEffect(() => {
-        console.log('Log')
-    }, [])
+    // useEffect(() => {
+    //     console.log('Log')
+    // }, [])
 
     const deleteWorkout = async () => {
         const response = await fetch(`http://127.0.0.1:8000/api/weight/${workoutLog.id}/`, {
@@ -65,28 +65,29 @@ const WorkoutLog = ({ workoutLog, setTotalWorkouts }) => {
     if (edit) {
         return (
             <Box className={styles['workout-log']}>
-                <Box>
-                    <Button className={styles['button-remove']} onClick={deleteWorkout}>Remove</Button>
+                <Box display='flex'>
                     <Button className={styles['button-edit']} onClick={editWorkout}>Save</Button>
+                    <Button className={styles['button-remove']} onClick={deleteWorkout}>Remove</Button>
                 </Box>
-                <Typography>Date: <input type='date' value={date} onChange={(e) => setDate(e.target.value)}></input></Typography>
-                <Typography>Workout: <input value={name} onChange={(e) => setName(e.target.value)}></input></Typography>
-                <Typography>Reps: <input value={reps} onChange={(e) => setReps(e.target.value)}></input></Typography>
-                <Typography>Sets: <input value={sets} onChange={(e) => setSets(e.target.value)}></input></Typography>
+                <Box className={styles['content-container']}>
+                    <Typography sx={{ fontWeight: 325 }}>Date: <input type='date' value={date} onChange={(e) => setDate(e.target.value)}></input></Typography>
+                    <Typography sx={{ fontWeight: 325 }}>Workout: <input value={name} onChange={(e) => setName(e.target.value)}></input></Typography>
+                    <Typography sx={{ fontWeight: 325 }}>Reps: <input value={reps} onChange={(e) => setReps(e.target.value)}></input></Typography>
+                    <Typography sx={{ fontWeight: 325 }}>Sets: <input value={sets} onChange={(e) => setSets(e.target.value)}></input></Typography>
+                </Box>
             </Box>
         )
     }
 
     return (
         <Box className={styles['workout-log']}>
-            <Box>
-                <Button className={styles['button-remove']} onClick={deleteWorkout}>Remove</Button>
-                <Button className={styles['button-edit']} onClick={() => setEdit(true)}>Edit</Button>
+            <Button className={styles['button-edit']} onClick={() => setEdit(true)}>Edit</Button>
+            <Box className={styles['content-container']}>
+                <Typography sx={{ fontWeight: 325 }}>Date: {date}</Typography>
+                <Typography sx={{ fontWeight: 325 }}>Workout: {name}</Typography>
+                <Typography sx={{ fontWeight: 325 }}>Reps: {reps}</Typography>
+                <Typography sx={{ fontWeight: 325 }}>Sets: {sets}</Typography>
             </Box>
-            <Typography>Date: {date}</Typography>
-            <Typography>Workout: {name}</Typography>
-            <Typography>Reps: {reps}</Typography>
-            <Typography>Sets: {sets}</Typography>
         </Box>
     )
 }

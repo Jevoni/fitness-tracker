@@ -35,7 +35,7 @@ const Supplements = () => {
 
     return (
         <Body>
-            <Typography className={`${styles['title']}`}>Supplements</Typography>
+            <Typography variant='h5' className={`${styles['title']}`}>Supplements</Typography>
             <SupplementsInput
                 setTotalSupplements={setTotalSupplements}
             />

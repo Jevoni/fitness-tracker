@@ -1,8 +1,9 @@
 .title {
-    font-weight: bold;
-    font-size: 20px;
     width: 100%;
     text-align: center;
+    margin-top: 10px;
+    font-size: 23px;
+    font-weight: 350;
 }
 
 .workout-log-container {

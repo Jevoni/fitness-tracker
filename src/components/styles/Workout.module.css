@@ -2,19 +2,20 @@
     height: 40px;
     margin: 10px;
     background-color: white;
-    border: 1px solid black;
+    /* border: 1.5px solid black; */
+    box-shadow: 0px 0px 1.8px 1px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 10px;
+
+    padding: 0px;
 }
 
 .workout-log .button-add {
     background-color: lightgreen;
     text-transform: none;
-    border: 1px solid black;
     color: black;
-    padding: 2px;
+    padding: 7px;
+    border-radius: 0;
 }
 
 .workout-log .button-add:hover {
@@ -24,10 +25,9 @@
 .workout-log .button-remove {
     background-color: lightcoral;
     text-transform: none;
-    border: 1px solid black;
     color: black;
-    padding: 2px;
-    margin-right: 2px;
+    padding: 7.5px;
+    border-radius: 0;
 }
 
 .workout-log .button-remove:hover {
@@ -37,13 +37,18 @@
 .workout-log .button-edit {
     background-color: orange;
     text-transform: none;
-    border: 1px solid black;
     color: black;
-    padding: 2px;
-    margin-left: 2px;
-
+    padding: 7.5px;
+    border-radius: 0;
 }
 
 .workout-log .button-edit:hover {
     background-color: orange;
+}
+
+.content-container {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
 }

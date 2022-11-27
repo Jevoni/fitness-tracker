@@ -17,15 +17,15 @@ const SidebarCard = ({ value, text }) => {
             flexDirection: 'column',
             alignItems: 'center',
             justifyContent: 'center',
-            margin: '20px',
+            margin: '15px',
             marginLeft: '12px',
             marginRight: '12px',
-            borderRadius: '6px',
+            borderRadius: '3px',
             textTransform: 'none',
-            border: '2px solid black'
+            border: '1.5px solid black'
         }}>
-            <Typography>{text}</Typography>
-        </Button>
+            <Typography fontSize='16.5px'>{text}</Typography>
+        </Button >
 
     )
 }

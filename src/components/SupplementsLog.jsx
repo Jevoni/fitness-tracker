@@ -60,8 +60,8 @@ const SupplementsLog = ({ supplementsLog, setTotalSupplements }) => {
         return (
             <Box className={styles['supplements-log']}>
                 <Box>
-                    <Button className={styles['button-remove']} onClick={deleteWorkout}>Remove</Button>
                     <Button className={styles['button-edit']} onClick={editWorkout}>Save</Button>
+                    <Button className={styles['button-remove']} onClick={deleteWorkout}>Remove</Button>
                 </Box>
                 <Typography>Date: <input type='date' value={date} onChange={(e) => setDate(e.target.value)}></input></Typography>
                 <Typography>Supplement: <input value={supplement} onChange={(e) => setSupplement(e.target.value)}></input></Typography>
@@ -72,10 +72,7 @@ const SupplementsLog = ({ supplementsLog, setTotalSupplements }) => {
 
     return (
         <Box className={styles['supplements-log']}>
-            <Box>
-                <Button className={styles['button-remove']} onClick={deleteWorkout}>Remove</Button>
-                <Button className={styles['button-edit']} onClick={() => setEdit(true)}>Edit</Button>
-            </Box>
+            <Button className={styles['button-edit']} onClick={() => setEdit(true)}>Edit</Button>
             <Typography>Date: {date}</Typography>
             <Typography>Supplement: {supplement}</Typography>
             <Typography>Dossage: {dossage}</Typography>

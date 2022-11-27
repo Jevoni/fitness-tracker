@@ -60,8 +60,8 @@ const CardioLog = ({ cardioLog, setTotalCardio }) => {
         return (
             <Box className={styles['cardio-log']}>
                 <Box>
-                    <Button className={styles['button-remove']} onClick={deleteWorkout}>Remove</Button>
                     <Button className={styles['button-edit']} onClick={editWorkout}>Save</Button>
+                    <Button className={styles['button-remove']} onClick={deleteWorkout}>Remove</Button>
                 </Box>
                 <Typography>Date: <input type='date' value={date} onChange={(e) => setDate(e.target.value)}></input></Typography>
                 <Typography>Workout: <input value={name} onChange={(e) => setName(e.target.value)}></input></Typography>
@@ -72,10 +72,7 @@ const CardioLog = ({ cardioLog, setTotalCardio }) => {
 
     return (
         <Box className={styles['cardio-log']}>
-            <Box>
-                <Button className={styles['button-remove']} onClick={deleteWorkout}>Remove</Button>
-                <Button className={styles['button-edit']} onClick={() => setEdit(true)}>Edit</Button>
-            </Box>
+            <Button className={styles['button-edit']} onClick={() => setEdit(true)}>Edit</Button>
             <Typography>Date: {date}</Typography>
             <Typography>Workout: {name}</Typography>
             <Typography>Duration: {duration}</Typography>
