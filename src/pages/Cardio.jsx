@@ -35,7 +35,7 @@ const Cardio = () => {
 
     return (
         <Body>
-            <Typography className={`${styles['title']}`}>Cardio</Typography>
+            <Typography variant='h5' className={`${styles['title']}`}>Cardio</Typography>
             <CardioInput
                 setTotalCardio={setTotalCardio}
             />

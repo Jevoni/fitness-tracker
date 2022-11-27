@@ -27,6 +27,7 @@
     border: 1px solid black;
     color: black;
     padding: 2px;
+    margin-right: 2px;
 }
 
 .supplements-log .button-remove:hover {

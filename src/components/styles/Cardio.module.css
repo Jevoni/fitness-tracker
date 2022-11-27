@@ -27,8 +27,22 @@
     border: 1px solid black;
     color: black;
     padding: 2px;
+    margin-right: 2px;
 }
 
 .cardio-log .button-remove:hover {
     background-color: lightcoral;
+}
+
+.cardio-log .button-edit {
+    background-color: orange;
+    text-transform: none;
+    border: 1px solid black;
+    color: black;
+    padding: 2px;
+    margin-left: 2px;
+}
+
+.cardio-log .button-edit:hover {
+    background-color: orange;
 }

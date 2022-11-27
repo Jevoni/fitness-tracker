@@ -79,15 +79,15 @@ export const AuthProvider = ({ children }) => {
         logoutUser: logoutUser
     }
 
-    useEffect(() => {
-        const fourMinutes = 1000 * 60 * 4
-        const interval = setInterval(() => {
-            if (authTokenRef.current) {
-                updateToken()
-            }
-            return clearInterval(interval)
-        }, fourMinutes)
-    }, [authTokens, loading])
+    // useEffect(() => {
+    //     const fourMinutes = 1000 * 60 * 4
+    //     const interval = setInterval(() => {
+    //         if (authTokenRef.current) {
+    //             updateToken()
+    //         }
+    //         return clearInterval(interval)
+    //     }, fourMinutes)
+    // }, [authTokens, loading])
 
     return (
         <AuthContext.Provider value={contextData}>

@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react'
-import { Typography, Button } from '@mui/material'
+import { Typography, Button, Box } from '@mui/material'
 import AuthContext from '../context/AuthContext'
 
 import styles from './styles/Workout.module.css'
@@ -44,10 +44,12 @@ const WorkoutInput = ({ setTotalWorkouts }) => {
 
     return (
         <form className={styles['workout-log']} onSubmit={(e) => onSubmitHandler(e)}>
-            <Typography>Date: <input required type='date' onChange={(e) => setDate(e.target.value)}></input></Typography>
-            <Typography>Workout: <input required type='text' onChange={(e) => setWorkout(e.target.value)}></input></Typography>
-            <Typography>Reps: <input required type='number' onChange={(e) => setReps(e.target.value)}></input></Typography>
-            <Typography>Sets: <input required type='number' onChange={(e) => setSets(e.target.value)}></input></Typography>
+            <Box className={styles['content-container']}>
+                <Typography>Date: <input required type='date' onChange={(e) => setDate(e.target.value)}></input></Typography>
+                <Typography>Workout: <input required type='text' onChange={(e) => setWorkout(e.target.value)}></input></Typography>
+                <Typography>Reps: <input required type='number' onChange={(e) => setReps(e.target.value)}></input></Typography>
+                <Typography>Sets: <input required type='number' onChange={(e) => setSets(e.target.value)}></input></Typography>
+            </Box>
             <Button className={styles['button-add']} type='submit'>Add</Button>
         </form>
     )
