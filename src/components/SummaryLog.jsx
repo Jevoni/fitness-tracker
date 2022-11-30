@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react'
-import { Box, Typography, Button } from '@mui/material'
+import React from 'react'
+import { Box, Typography } from '@mui/material'
 
 import styles from './styles/Workout.module.css'
 

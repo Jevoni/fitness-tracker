@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react'
-import { Typography, Button } from '@mui/material'
+import { Typography, Button, Box } from '@mui/material'
 import AuthContext from '../context/AuthContext'
 
 import styles from './styles/Cardio.module.css'
@@ -17,7 +17,7 @@ const CardioInput = ({ setTotalCardio }) => {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                // 'Authorization': 'Bearer' + String(authTokens?.access)
+                'Authorization': 'Bearer ' + String(authTokens?.access)
             },
             body: JSON.stringify({
                 'date': date,
@@ -42,9 +42,11 @@ const CardioInput = ({ setTotalCardio }) => {
 
     return (
         <form className={styles['cardio-log']} onSubmit={(e) => onSubmitHandler(e)}>
-            <Typography>Date: <input required type='date' onChange={(e) => setDate(e.target.value)}></input></Typography>
-            <Typography>Workout: <input required type='text' onChange={(e) => setName(e.target.value)}></input></Typography>
-            <Typography>Duration: <input required type='time' onChange={(e) => setDuration(e.target.value)}></input></Typography>
+            <Box className={styles['content-container']}>
+                <Typography>Date: <input required type='date' onChange={(e) => setDate(e.target.value)}></input></Typography>
+                <Typography>Workout: <input required type='text' onChange={(e) => setName(e.target.value)}></input></Typography>
+                <Typography>Duration: <input required type='time' onChange={(e) => setDuration(e.target.value)}></input></Typography>
+            </Box>
             <Button className={styles['button-add']} type='submit'>Add</Button>
         </form>
     )

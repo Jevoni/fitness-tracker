@@ -48,7 +48,7 @@ def getRoutes(request):
 
 #weight views
 @api_view(['GET','POST'])
-# @permission_classes([IsAuthenticated])
+@permission_classes([IsAuthenticated])
 def weight(request):
     user = request.user
     print(user)
@@ -62,7 +62,7 @@ def weight(request):
     return Response(serializer.data)
 
 @api_view(['PUT','DELETE'])
-# @permission_classes([IsAuthenticated])
+@permission_classes([IsAuthenticated])
 def modifyWeight(request,pk):
     user = request.user
     weights = Weight.objects.get(id=pk)
@@ -79,7 +79,7 @@ def modifyWeight(request,pk):
 #     weights.delete()
 
 @api_view(['GET','POST',])
-# @permission_classes([IsAuthenticated])
+@permission_classes([IsAuthenticated])
 def cardio(request):
     user = request.user
     cardios = Cardio.objects.all()
@@ -93,7 +93,7 @@ def cardio(request):
     return Response(serializer.data)
 
 @api_view(['PUT','DELETE'])
-# @permission_classes([IsAuthenticated])
+@permission_classes([IsAuthenticated])
 def modifyCardio(request,pk):
     user = request.user
     cardios = Cardio.objects.get(id=pk)
@@ -105,7 +105,7 @@ def modifyCardio(request,pk):
     return Response(serializer.data)
 
 @api_view(['GET','POST',])
-# @permission_classes([IsAuthenticated])
+@permission_classes([IsAuthenticated])
 def supplement(request):
     user = request.user
     supplements = Supplement.objects.all()
@@ -119,7 +119,7 @@ def supplement(request):
     return Response(serializer.data)
 
 @api_view(['PUT','DELETE'])
-# @permission_classes([IsAuthenticated])
+@permission_classes([IsAuthenticated])
 def modifySupplement(request,pk):
     user =request.user
     supplements = Supplement.objects.get(id=pk)

@@ -11,13 +11,19 @@ import LoadingSpinner from '../components/LoadingSpinner'
 import styles from './styles/Supplements.module.css'
 
 const Supplements = () => {
-    const { setIsHome } = useContext(AuthContext)
+    const { setIsHome, authTokens } = useContext(AuthContext)
     const [totalSupplements, setTotalSupplements] = useState(null)
     const [response, setResponse] = useState(null)
 
     useEffect(() => {
         const getLog = async () => {
-            const response = await fetch('http://127.0.0.1:8000/api/supplement/')
+            const response = await fetch('http://127.0.0.1:8000/api/supplement/', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + String(authTokens?.access)
+                }
+            })
             const data = await response.json()
             setResponse(response)
             setTotalSupplements(data)
@@ -42,7 +48,7 @@ const Supplements = () => {
             <Box className={styles['supplements-log-container']}>
                 {totalSupplements?.map((supplementsLog) =>
                     <SupplementsLog
-                        id={supplementsLog.id}
+                        key={supplementsLog.id}
                         supplementsLog={supplementsLog}
                         setTotalSupplements={setTotalSupplements}
                     />

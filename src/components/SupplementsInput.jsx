@@ -17,7 +17,7 @@ const SupplementsInput = ({ setTotalSupplements }) => {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                // 'Authorization': 'Bearer' + String(authTokens?.access)
+                'Authorization': 'Bearer ' + String(authTokens?.access)
             },
             body: JSON.stringify({
                 'date': date,

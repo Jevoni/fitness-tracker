@@ -9,7 +9,7 @@ import styles from './styles/Summary.module.css'
 import SummaryLog from '../components/SummaryLog'
 
 const Summary = () => {
-    const { setIsHome } = useContext(AuthContext)
+    const { setIsHome, authTokens } = useContext(AuthContext)
     const [totalWeight, setTotalWeight] = useState(null)
     const [totalCardio, setTotalCardio] = useState(null)
     const [totalSupps, setTotalSupps] = useState(null)
@@ -17,15 +17,34 @@ const Summary = () => {
 
     useEffect(() => {
         const getLogs = async () => {
-            const response = await fetch('http://127.0.0.1:8000/api/weight/')
+            const response = await fetch('http://127.0.0.1:8000/api/weight/', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + String(authTokens?.access)
+                }
+            })
+
             const data = await response.json()
             setTotalWeight(data)
             // setResponse(response)
-            const response2 = await fetch('http://127.0.0.1:8000/api/cardio/')
+            const response2 = await fetch('http://127.0.0.1:8000/api/cardio/', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + String(authTokens?.access)
+                }
+            })
             const data2 = await response2.json()
             setTotalCardio(data2)
 
-            const response3 = await fetch('http://127.0.0.1:8000/api/supplement/')
+            const response3 = await fetch('http://127.0.0.1:8000/api/supplement/', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + String(authTokens?.access)
+                }
+            })
             const data3 = await response3.json()
             setTotalSupps(data3)
         }

@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { Box, Typography, Button } from '@mui/material'
+import AuthContext from '../context/AuthContext'
 
 import styles from './styles/Cardio.module.css'
 
 const CardioLog = ({ cardioLog, setTotalCardio }) => {
+    const { authTokens } = useContext(AuthContext)
     const [date, setDate] = useState(cardioLog.date)
     const [name, setName] = useState(cardioLog.name)
     const [duration, setDuration] = useState(cardioLog.duration)
@@ -14,7 +16,7 @@ const CardioLog = ({ cardioLog, setTotalCardio }) => {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
-                // 'Authorization': 'Bearer' + String(authTokens?.access)
+                'Authorization': 'Bearer ' + String(authTokens?.access)
             },
         })
 
@@ -73,9 +75,11 @@ const CardioLog = ({ cardioLog, setTotalCardio }) => {
     return (
         <Box className={styles['cardio-log']}>
             <Button className={styles['button-edit']} onClick={() => setEdit(true)}>Edit</Button>
-            <Typography>Date: {date}</Typography>
-            <Typography>Workout: {name}</Typography>
-            <Typography>Duration: {duration}</Typography>
+            <Box className={styles['content-container']}>
+                <Typography sx={{ fontWeight: 325 }}>Date: {date}</Typography>
+                <Typography sx={{ fontWeight: 325 }}>Workout: {name}</Typography>
+                <Typography sx={{ fontWeight: 325 }}>Duration: {duration}</Typography>
+            </Box>
         </Box>
     )
 }

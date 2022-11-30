@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { Box, Typography, Button } from '@mui/material'
+import AuthContext from '../context/AuthContext'
 
 import styles from './styles/Workout.module.css'
 
 const WorkoutLog = ({ workoutLog, setTotalWorkouts }) => {
+    const { authTokens } = useContext(AuthContext)
     const [date, setDate] = useState(workoutLog.date)
     const [name, setName] = useState(workoutLog.name)
     const [reps, setReps] = useState(workoutLog.reps)
@@ -19,7 +21,7 @@ const WorkoutLog = ({ workoutLog, setTotalWorkouts }) => {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
-                // 'Authorization': 'Bearer' + String(authTokens?.access)
+                'Authorization': 'Bearer ' + String(authTokens?.access)
             },
         })
 

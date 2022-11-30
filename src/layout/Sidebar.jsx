@@ -9,11 +9,13 @@ import styles from './styles/Sidebar.module.css'
 const Sidebar = (display) => {
     return (
         <Box className={styles.sidebar} display={display}>
+            <Box className={styles['button-container']}>
+                <SidebarButton text='Summary' value='summary' />
+                <SidebarButton text='Weight Training' value='weights' />
+                <SidebarButton text='Cardio' value='cardio' />
+                <SidebarButton text='Supplements' value='supplements' />
+            </Box>
             <ProfilePicture />
-            <SidebarButton text='Summary' value='summary' />
-            <SidebarButton text='Weight Training' value='weights' />
-            <SidebarButton text='Cardio' value='cardio' />
-            <SidebarButton text='Supplements' value='supplements' />
         </Box>
     )
 }

@@ -11,13 +11,19 @@ import LoadingSpinner from '../components/LoadingSpinner'
 import styles from './styles/WeightTraining.module.css'
 
 const WeightTraining = () => {
-    const { setIsHome } = useContext(AuthContext)
+    const { setIsHome, authTokens } = useContext(AuthContext)
     const [totalWorkouts, setTotalWorkouts] = useState(null)
     const [response, setResponse] = useState(null)
 
     useEffect(() => {
         const getLog = async () => {
-            const response = await fetch('http://127.0.0.1:8000/api/weight/')
+            const response = await fetch('http://127.0.0.1:8000/api/weight/', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + String(authTokens?.access)
+                }
+            })
             const data = await response.json()
             setResponse(response)
             setTotalWorkouts(data)

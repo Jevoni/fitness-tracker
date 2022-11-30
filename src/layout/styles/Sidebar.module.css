@@ -1,8 +1,17 @@
 .sidebar {
     width: 15%;
-    min-height: 100vh;
+    min-height: 95vh;
     background-color: #dbc3e4;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    padding-top: 6px;
     align-items: center;
+}
+
+.button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
 }

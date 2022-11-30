@@ -1,15 +1,18 @@
 import React from 'react'
-import { Box } from '@mui/material'
+import { Box, Typography, Button } from '@mui/material'
 
 import DefaultUserPic from '../media/user.png'
 
 const ProfilePicture = () => {
     return (
-        <Box sx={{ height: '150px', width: '150px', display: 'flex', justifyContent: 'center', marginTop: '10px' }}>
-            <Box sx={{ height: '100%', width: '100%', backgroundColor: '#9b59b6', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', border: '1.5px solid black' }} >
-                <Box component='img' src={DefaultUserPic} height='100px' />
+        <Button sx={{ width: '90%', height: '70px', backgroundColor: '#9b59b6', display: 'flex', borderRadius: '3px', marginBottom: '12px', textTransform: 'none', alignItems: 'center', justifyContent: 'flex-start' }}>
+            <Box sx={{ height: '55px', width: '55px', display: 'flex', marginTop: '10px', margin: '6px', }}>
+                <Box sx={{ height: '100%', width: '100%', backgroundColor: '#dbc3e4', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', border: '1px solid black' }}>
+                    <Box component='img' src={DefaultUserPic} height='35px' />
+                </Box>
             </Box>
-        </Box>
+            <Typography sx={{ fontSize: '18px', color: 'white', alignSelf: 'center', justifySelf: 'center' }}>Profile</Typography>
+        </Button>
     )
 }
 

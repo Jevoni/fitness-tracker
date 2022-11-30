@@ -1,9 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { Box, Typography, Button } from '@mui/material'
+import AuthContext from '../context/AuthContext'
 
 import styles from './styles/Supplements.module.css'
 
 const SupplementsLog = ({ supplementsLog, setTotalSupplements }) => {
+    const { authTokens } = useContext(AuthContext)
     const [date, setDate] = useState(supplementsLog.date)
     const [dossage, setDossage] = useState(supplementsLog.dossage)
     const [supplement, setSupplement] = useState(supplementsLog.name)
@@ -14,7 +16,7 @@ const SupplementsLog = ({ supplementsLog, setTotalSupplements }) => {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
-                // 'Authorization': 'Bearer' + String(authTokens?.access)
+                'Authorization': 'Bearer ' + String(authTokens?.access)
             },
         })
 
