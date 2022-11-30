@@ -33,7 +33,13 @@ const SupplementsInput = ({ setTotalSupplements }) => {
         }
 
         const getLog = async () => {
-            const response = await fetch('http://127.0.0.1:8000/api/supplement/')
+            const response = await fetch('http://127.0.0.1:8000/api/supplement/', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + String(authTokens?.access)
+                }
+            })
             const data = await response.json()
             setTotalSupplements(data)
         }
