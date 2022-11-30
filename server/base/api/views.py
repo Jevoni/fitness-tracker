@@ -40,13 +40,10 @@ def getRoutes(request):
 
     return Response(routes)
 
-# class createWeight(generics.ListCreateAPIView):
-#     queryset = Weight.objects.all()
-#     serializer_class = WeightSerializer
-#     pass
 
 
 #weight views
+
 @api_view(['GET','POST'])
 @permission_classes([IsAuthenticated])
 def weight(request):
@@ -64,7 +61,7 @@ def weight(request):
 @permission_classes([IsAuthenticated])
 def modifyWeight(request,pk):
     user = request.user
-    weights = user.weight_set.all()
+    weights = user.weight_set.get(id =pk)
     serializer = WeightSerializer(instance = weights, data = request.data)
     if request.method == 'DELETE':
         weights.delete()
@@ -72,10 +69,9 @@ def modifyWeight(request,pk):
         serializer.save()
     return Response(serializer.data)
 
-# @api_view(['DELETE'])
-# def removeWeight(request,pk):
-#     weights = Weight.objects.get(id=pk)
-#     weights.delete()
+
+
+#cardio views
 
 @api_view(['GET','POST',])
 @permission_classes([IsAuthenticated])
@@ -95,13 +91,17 @@ def cardio(request):
 @permission_classes([IsAuthenticated])
 def modifyCardio(request,pk):
     user = request.user
-    cardios = user.cardio_set.all()
+    cardios = user.cardio_set.get(id =pk)
     serializer = CardioSerializer(instance = cardios, data = request.data)
     if request.method == 'DELETE':
         cardios.delete()
     if serializer.is_valid():
         serializer.save()
     return Response(serializer.data)
+
+
+
+#supplement views
 
 @api_view(['GET','POST',])
 @permission_classes([IsAuthenticated])
@@ -121,7 +121,7 @@ def supplement(request):
 @permission_classes([IsAuthenticated])
 def modifySupplement(request,pk):
     user =request.user
-    supplements = user.supplement_set.all()
+    supplements = user.supplement_set.get(id =pk)
     serializer = SupplementSerializer(instance = supplements, data = request.data)
     if request.method == 'DELETE':
         supplements.delete()
@@ -130,6 +130,3 @@ def modifySupplement(request,pk):
     return Response(serializer.data)
 
 
-    
-
-{"date":"02/20/2022","name":"squats","reps":10,"sets":3}
