@@ -51,8 +51,7 @@ def getRoutes(request):
 @permission_classes([IsAuthenticated])
 def weight(request):
     user = request.user
-    print(user)
-    weights = Weight.objects.all()
+    weights = user.weight_set.all()
     serializer = WeightSerializer(weights, many = True)
     if request.method == "POST":
         form = WeightForm(request.data)
@@ -65,7 +64,7 @@ def weight(request):
 @permission_classes([IsAuthenticated])
 def modifyWeight(request,pk):
     user = request.user
-    weights = Weight.objects.get(id=pk)
+    weights = user.weight_set.all()
     serializer = WeightSerializer(instance = weights, data = request.data)
     if request.method == 'DELETE':
         weights.delete()
@@ -82,7 +81,7 @@ def modifyWeight(request,pk):
 @permission_classes([IsAuthenticated])
 def cardio(request):
     user = request.user
-    cardios = Cardio.objects.all()
+    cardios = user.cardio_set.all()
     serializer = CardioSerializer(cardios, many = True)
     if request.method == "POST":
         print(request.data)
@@ -96,7 +95,7 @@ def cardio(request):
 @permission_classes([IsAuthenticated])
 def modifyCardio(request,pk):
     user = request.user
-    cardios = Cardio.objects.get(id=pk)
+    cardios = user.cardio_set.all()
     serializer = CardioSerializer(instance = cardios, data = request.data)
     if request.method == 'DELETE':
         cardios.delete()
@@ -108,7 +107,7 @@ def modifyCardio(request,pk):
 @permission_classes([IsAuthenticated])
 def supplement(request):
     user = request.user
-    supplements = Supplement.objects.all()
+    supplements = user.supplement_set.all()
     serializer = SupplementSerializer(supplements, many = True)
     if request.method == "POST":
         print(request.data)
@@ -122,7 +121,7 @@ def supplement(request):
 @permission_classes([IsAuthenticated])
 def modifySupplement(request,pk):
     user =request.user
-    supplements = Supplement.objects.get(id=pk)
+    supplements = user.supplement_set.all()
     serializer = SupplementSerializer(instance = supplements, data = request.data)
     if request.method == 'DELETE':
         supplements.delete()
