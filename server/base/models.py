@@ -31,7 +31,7 @@ class Weight(models.Model):
 
 class Cardio(models.Model):
     
-    user = models.ForeignKey(User, on_delete= models.CASCADE)
+    user = models.ForeignKey(User, on_delete= models.CASCADE, default=1)
     date = models.DateField()
     name = models.CharField(max_length=200)
     duration = models.DurationField()
@@ -44,7 +44,7 @@ class Cardio(models.Model):
 
 class Supplement(models.Model):
 
-    user = models.ForeignKey(User, on_delete= models.CASCADE)
+    user = models.ForeignKey(User, on_delete= models.CASCADE, default=1)
     date = models.DateField()
     name = models.CharField(max_length=200)
     dossage = models.IntegerField()
