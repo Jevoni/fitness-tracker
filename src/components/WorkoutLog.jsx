@@ -30,7 +30,13 @@ const WorkoutLog = ({ workoutLog, setTotalWorkouts }) => {
         }
 
         const getLog = async () => {
-            const response = await fetch('http://127.0.0.1:8000/api/weight/')
+            const response = await fetch('http://127.0.0.1:8000/api/weight/', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + String(authTokens?.access)
+                }
+            })
             const data = await response.json()
             setTotalWorkouts(data)
         }

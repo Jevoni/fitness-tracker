@@ -25,7 +25,13 @@ const CardioLog = ({ cardioLog, setTotalCardio }) => {
         }
 
         const getLog = async () => {
-            const response = await fetch('http://127.0.0.1:8000/api/cardio/')
+            const response = await fetch('http://127.0.0.1:8000/api/cardio/', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + String(authTokens?.access)
+                }
+            })
             const data = await response.json()
             setTotalCardio(data)
         }
