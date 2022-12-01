@@ -11,7 +11,7 @@ import LoadingSpinner from '../components/LoadingSpinner'
 import styles from './styles/WeightTraining.module.css'
 
 const WeightTraining = () => {
-    const { setIsHome, authTokens } = useContext(AuthContext)
+    const { authTokens } = useContext(AuthContext)
     const [totalWorkouts, setTotalWorkouts] = useState(null)
     const [response, setResponse] = useState(null)
 
@@ -29,7 +29,6 @@ const WeightTraining = () => {
             setTotalWorkouts(data)
         }
         getLog()
-        setIsHome(true)
         console.log('Weight Training (useEffect)')
     }, [])
 

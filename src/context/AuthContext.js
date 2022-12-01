@@ -13,7 +13,6 @@ export const AuthProvider = ({ children }) => {
     const [authTokens, setAuthTokens] = useState(() => localStorage.getItem('authTokens') ? JSON.parse(localStorage.getItem('authTokens')) : null)
     const [user, setUser] = useState(() => localStorage.getItem('authTokens') ? jwt_decode(localStorage.getItem('authTokens')) : null)
     const [loading, setLoading] = useState(true)
-    const [isHome, setIsHome] = useState(null)
 
     authTokenRef.current = authTokens
 
@@ -55,7 +54,7 @@ export const AuthProvider = ({ children }) => {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ 'refresh': authTokens?.refresh })
+            body: JSON.stringify({ 'refresh': authTokenRef.current?.refresh })
         })
 
         const data = await response.json()
@@ -73,14 +72,12 @@ export const AuthProvider = ({ children }) => {
     const contextData = {
         user: user,
         authTokens: authTokenRef.current,
-        isHome: isHome,
-        setIsHome: setIsHome,
         loginUser: loginUser,
         logoutUser: logoutUser
     }
 
     useEffect(() => {
-        const fourMinutes = 1000 * 60 * 4
+        const fourMinutes = 1000 * 60 * 1
         const interval = setInterval(() => {
             if (authTokenRef.current) {
                 updateToken()

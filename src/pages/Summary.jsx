@@ -9,7 +9,7 @@ import styles from './styles/Summary.module.css'
 import SummaryLog from '../components/SummaryLog'
 
 const Summary = () => {
-    const { setIsHome, authTokens } = useContext(AuthContext)
+    const { authTokens } = useContext(AuthContext)
     const [totalWeight, setTotalWeight] = useState(null)
     const [totalCardio, setTotalCardio] = useState(null)
     const [totalSupps, setTotalSupps] = useState(null)
@@ -49,7 +49,6 @@ const Summary = () => {
             setTotalSupps(data3)
         }
         getLogs()
-        setIsHome(true)
         console.log('Summary (useEffect)')
     }, [])
 
@@ -92,8 +91,8 @@ const Summary = () => {
 
 export default Summary
 
-{/* <Typography variant='h2' textAlign='center'> Coming Soon...</Typography> */ }
-{/* <div>
+{/* <Typography variant='h2' textAlign='center'> Coming Soon...</Typography> 
+<div>
                 <Typography sx={{ fontWeight: 'bold', marginLeft: '5px' }}>Recent weight training logs: </Typography>
                 <Box sx={{ border: '1px solid black', margin: '5px', backgroundColor: 'white', height: '150px' }}>
                 </Box>
@@ -107,4 +106,4 @@ export default Summary
                 <Typography sx={{ fontWeight: 'bold', marginLeft: '5px' }}>Recent supplements logs:</Typography>
                 <Box sx={{ border: '1px solid black', margin: '5px', backgroundColor: 'white', height: '150px' }}>
                 </Box>
-            </div> */}
+            </div>  */}

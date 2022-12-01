@@ -12,18 +12,18 @@ import WeightTraining from './pages/WeightTraining';
 import Cardio from './pages/Cardio';
 import Supplements from './pages/Supplements';
 import SignUp from './pages/SignUp';
+import Profile from './pages/Profile';
 
 import styles from './App.module.css'
 
 function App() {
-  const { isHome } = useContext(AuthContext)
 
   return (
     <Box>
       <CssBaseline />
-      <Header display={isHome ? 'inital' : 'none'} />
+      <Header />
       <Box className={`${styles['main-container']}`}>
-        <Sidebar display={isHome ? 'inital' : 'none'} />
+        <Sidebar />
         <Routes>
           <Route exact path='/' element={<Login />} />
           <Route exact path='/signup' element={<SignUp />} />
@@ -31,6 +31,7 @@ function App() {
           <Route exact path='/weights' element={<WeightTraining />} />
           <Route exact path='/cardio' element={<Cardio />} />
           <Route exact path='/supplements' element={<Supplements />} />
+          <Route exact path='/profile' element={<Profile />} />
         </Routes>
       </Box>
     </Box>

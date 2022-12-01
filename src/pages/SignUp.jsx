@@ -6,7 +6,7 @@ import AuthContext from '../context/AuthContext'
 import styles from './styles/SignUp.module.css'
 
 const SignUp = () => {
-    const { loginUser, setIsHome } = useContext(AuthContext)
+    const { loginUser, authTokens } = useContext(AuthContext)
     const [firstName, setFirstName] = useState('')
     const [lastName, setLastName] = useState('')
     const [email, setEmail] = useState('')
@@ -14,14 +14,28 @@ const SignUp = () => {
     const [confirmPassword, setConfirmPassword] = useState('')
 
     useEffect(() => {
-        setIsHome(false)
+        const getLog = async () => {
+            const response = await fetch('http://127.0.0.1:8000/api/register/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + String(authTokens?.access)
+                },
+                body: JSON.stringify({
+                    'firstName': firstName,
+                    'lastName': lastName,
+                    'email': email,
+                    'password1': password,
+                    'password2': confirmPassword,
+                })
+            })
+        }
         console.log('useEffect (SignUp)')
     }, [])
 
     return (
         <Box className={`${styles['page']}`}>
             <Box className={`${styles['signup-container']}`}>
-                <Typography variant='h5' className={`${styles['signup-container']}h5`}>Fitness Tracker</Typography>
                 <form onSubmit={loginUser} className={`${styles['signup-container']}form`}>
                     <input
                         type='text'
