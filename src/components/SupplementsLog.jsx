@@ -87,9 +87,11 @@ const SupplementsLog = ({ supplementsLog, setTotalSupplements }) => {
     return (
         <Box className={styles['supplements-log']}>
             <Button className={styles['button-edit']} onClick={() => setEdit(true)}>Edit</Button>
-            <Typography>Date: {date}</Typography>
-            <Typography>Supplement: {supplement}</Typography>
-            <Typography>Dossage: {dossage}</Typography>
+            <Box className={styles['content-container']}>
+                <Typography sx={{ fontWeight: 325 }}>Date: {date}</Typography>
+                <Typography sx={{ fontWeight: 325 }}>Supplement: {supplement}</Typography>
+                <Typography sx={{ fontWeight: 325 }}>Dossage: {dossage}</Typography>
+            </Box>
         </Box>
     )
 }

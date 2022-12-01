@@ -2,18 +2,17 @@ import React, { useEffect, useContext, useState } from 'react'
 import { Box, Typography } from '@mui/material'
 import AuthContext from '../context/AuthContext'
 
-import WorkoutLog from '../components/WorkoutLog'
 import Body from '../layout/Body'
 
-import styles from './styles/Summary.module.css'
 import SummaryLog from '../components/SummaryLog'
+
+import styles from './styles/Summary.module.css'
 
 const Summary = () => {
     const { authTokens } = useContext(AuthContext)
     const [totalWeight, setTotalWeight] = useState(null)
     const [totalCardio, setTotalCardio] = useState(null)
     const [totalSupps, setTotalSupps] = useState(null)
-    // const [response, setResponse] = useState(null)
 
     useEffect(() => {
         const getLogs = async () => {
@@ -65,8 +64,8 @@ const Summary = () => {
                     />
                 )}
             </Box>
-            <Box sx={{ display: 'flex', flexDirection: 'column-reverse' }}>
-                {totalCardio?.map((workoutLog) =>
+            <Box sx={{ display: 'flex', flexDirection: 'column-reverse', marginTop: '40px' }}>
+                {totalCardio?.slice(totalCardio.length - 3, totalCardio.length)?.map((workoutLog) =>
                     <SummaryLog
                         key={workoutLog.id}
                         workoutLog={workoutLog}
@@ -75,8 +74,8 @@ const Summary = () => {
                     />
                 )}
             </Box>
-            <Box sx={{ display: 'flex', flexDirection: 'column-reverse' }}>
-                {totalSupps?.map((workoutLog) =>
+            <Box sx={{ display: 'flex', flexDirection: 'column-reverse', marginTop: '40px' }}>
+                {totalSupps?.slice(totalSupps.length - 3, totalSupps.length)?.map((workoutLog) =>
                     <SummaryLog
                         key={workoutLog.id}
                         workoutLog={workoutLog}
@@ -90,20 +89,3 @@ const Summary = () => {
 }
 
 export default Summary
-
-{/* <Typography variant='h2' textAlign='center'> Coming Soon...</Typography> 
-<div>
-                <Typography sx={{ fontWeight: 'bold', marginLeft: '5px' }}>Recent weight training logs: </Typography>
-                <Box sx={{ border: '1px solid black', margin: '5px', backgroundColor: 'white', height: '150px' }}>
-                </Box>
-            </div>
-            <div>
-                <Typography sx={{ fontWeight: 'bold', marginLeft: '5px' }}>Recent cardio logs: </Typography>
-                <Box sx={{ border: '1px solid black', margin: '5px', backgroundColor: 'white', height: '150px' }}>
-                </Box>
-            </div>
-            <div>
-                <Typography sx={{ fontWeight: 'bold', marginLeft: '5px' }}>Recent supplements logs:</Typography>
-                <Box sx={{ border: '1px solid black', margin: '5px', backgroundColor: 'white', height: '150px' }}>
-                </Box>
-            </div>  */}

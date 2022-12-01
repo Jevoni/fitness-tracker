@@ -48,9 +48,11 @@ const SupplementsInput = ({ setTotalSupplements }) => {
 
     return (
         <form className={styles['supplements-log']} onSubmit={(e) => onSubmitHandler(e)}>
-            <Typography>Date: <input required type='date' onChange={(e) => setDate(e.target.value)}></input></Typography>
-            <Typography>Supplement: <input required type='text' onChange={(e) => setSupplement(e.target.value)}></input></Typography>
-            <Typography>Dossage: <input required type='number' onChange={(e) => setDossage(e.target.value)}></input></Typography>
+            <Box className={styles['content-container']}>
+                <Typography sx={{ fontWeight: 325 }}>Date: <input required type='date' onChange={(e) => setDate(e.target.value)}></input></Typography>
+                <Typography sx={{ fontWeight: 325 }}>Supplement: <input required type='text' onChange={(e) => setSupplement(e.target.value)}></input></Typography>
+                <Typography sx={{ fontWeight: 325 }}>Dossage: <input required type='number' onChange={(e) => setDossage(e.target.value)}></input></Typography>
+            </Box>
             <Button className={styles['button-add']} type='submit'>Add</Button>
         </form>
     )
