@@ -1,6 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { MdFitnessCenter } from 'react-icons/md'
 import { Box, Typography, Button } from '@mui/material'
 import AuthContext from '../context/AuthContext'
 
@@ -17,18 +16,8 @@ const Login = () => {
 
     return (
         <Box className={styles.page}>
-            {/* <Box className={`${styles.title}`}>
-                <Box display='flex'>
-                    <MdFitnessCenter size={25} style={{ marginRight: '15px', color: '2fe3e0', fontWeight: 'bold' }} />
-                    <Typography sx={{ fontWeight: '550', fontSize: '20px' }} variant='h4'>Fitness Tracker</Typography>
-                </Box>
-            </Box> */}
             <Box sx={{ height: '95vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <Box className={styles['login-container']}>
-                    {/* <Box sx={{ display: 'flex', alignItems: 'center', marginBottom: '30px' }}>
-                    <MdFitnessCenter size={35} style={{ marginRight: '10px', color: '2fe3e0', fontWeight: 'bold' }} />
-                    <Typography variant='h5' className={`${styles['login-container']}h5`}>Fitness Tracker</Typography>
-                </Box> */}
                     <form onSubmit={loginUser} className={`${styles['login-container']}form`}>
                         <input
                             type='email'

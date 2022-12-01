@@ -49,9 +49,9 @@ const CardioInput = ({ setTotalCardio }) => {
     return (
         <form className={styles['cardio-log']} onSubmit={(e) => onSubmitHandler(e)}>
             <Box className={styles['content-container']}>
-                <Typography>Date: <input required type='date' onChange={(e) => setDate(e.target.value)}></input></Typography>
-                <Typography>Workout: <input required type='text' onChange={(e) => setName(e.target.value)}></input></Typography>
-                <Typography>Duration: <input required type='time' onChange={(e) => setDuration(e.target.value)}></input></Typography>
+                <Typography sx={{ fontWeight: 325 }}>Date: <input required type='date' onChange={(e) => setDate(e.target.value)}></input></Typography>
+                <Typography sx={{ fontWeight: 325 }}>Workout: <input required type='text' onChange={(e) => setName(e.target.value)}></input></Typography>
+                <Typography sx={{ fontWeight: 325 }}>Duration: <input required type='time' onChange={(e) => setDuration(e.target.value)}></input></Typography>
             </Box>
             <Button className={styles['button-add']} type='submit'>Add</Button>
         </form>

@@ -7,7 +7,7 @@ import { Box } from '@mui/material'
 import AuthContext from '../context/AuthContext'
 
 import SidebarButton from '../components/SidebarButton'
-import ProfilePicture from '../components/ProfilePicture'
+import ProfileButton from '../components/ProfileButton'
 
 import styles from './styles/Sidebar.module.css'
 
@@ -22,7 +22,7 @@ const Sidebar = () => {
                 <SidebarButton icon={<BiRun size={30} />} text='Cardio' value='cardio' />
                 <SidebarButton icon={<CgPill size={28} />} text='Supplements' value='supplements' />
             </Box>
-            <ProfilePicture />
+            <ProfileButton />
         </Box>
     )
 }

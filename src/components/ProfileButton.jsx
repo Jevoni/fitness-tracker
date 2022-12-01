@@ -4,7 +4,7 @@ import { Box, Typography, Button } from '@mui/material'
 
 import DefaultUserPic from '../media/user.png'
 
-const ProfilePicture = () => {
+const ProfileButton = () => {
     const navigate = useNavigate()
 
     const buttonClickHandler = () => {
@@ -23,4 +23,4 @@ const ProfilePicture = () => {
     )
 }
 
-export default ProfilePicture
+export default ProfileButton
