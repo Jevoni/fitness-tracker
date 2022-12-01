@@ -8,7 +8,11 @@ from django.contrib.auth.models import AbstractUser
 
 class User(AbstractUser):
     # pass
-    name = models.CharField(max_length=200, null=True)
+    groups = None
+    user_permissions = None
+    username = None
+    
+
     email = models.EmailField(unique=True)
 
     USERNAME_FIELD = 'email'

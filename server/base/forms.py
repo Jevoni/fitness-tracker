@@ -1,5 +1,11 @@
 from django.forms import ModelForm
-from .models import Weight,Cardio,Supplement
+from .models import User,Weight,Cardio,Supplement
+from django.contrib.auth.forms import UserCreationForm
+
+class UserCreateForm(UserCreationForm):
+    class Meta:
+        model = User
+        fields = ['first_name','last_name','email','password1','password2']
 
 class WeightForm(ModelForm):
     class Meta:

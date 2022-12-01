@@ -5,9 +5,9 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
 
-from base .models import Weight,Cardio,Supplement
+from base .models import User,Weight,Cardio,Supplement
 from .serializers import WeightSerializer,CardioSerializer,SupplementSerializer
-from base .forms import WeightForm,CardioForm,SupplementForm
+from base .forms import UserCreateForm,WeightForm,CardioForm,SupplementForm
 from rest_framework import generics
 
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
@@ -40,6 +40,21 @@ def getRoutes(request):
 
     return Response(routes)
 
+
+#user view
+
+@api_view(['POST'])
+def registerPage(request):
+    if request.method == "POST":
+        form = UserCreateForm(request.data)
+        print(form.is_valid())
+        if form.is_valid():
+            user = form.save()
+            # MyTokenObtainPairSerializer.get_token(user)
+            # user = form.save(commit=False)
+            # user.email = user.email.lower()
+            # user.save()
+        return Response()
 
 
 #weight views
