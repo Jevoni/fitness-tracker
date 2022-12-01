@@ -11,7 +11,7 @@ import LoadingSpinner from '../components/LoadingSpinner'
 import styles from './styles/Supplements.module.css'
 
 const Supplements = () => {
-    const { setIsHome, authTokens } = useContext(AuthContext)
+    const { authTokens } = useContext(AuthContext)
     const [totalSupplements, setTotalSupplements] = useState(null)
     const [response, setResponse] = useState(null)
 
@@ -29,7 +29,6 @@ const Supplements = () => {
             setTotalSupplements(data)
         }
         getLog()
-        setIsHome(true)
         console.log('Supplements (useEffect)')
     }, [])
 

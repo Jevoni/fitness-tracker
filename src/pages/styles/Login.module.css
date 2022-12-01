@@ -1,17 +1,28 @@
 .page {
     display: flex;
+    flex-direction: column;
     width: 100%;
-    height: 100vh;
-    justify-content: center;
-    align-items: center;
+    height: 95vh;
     background-color: #dbc3e4;
+}
+
+.title {
+    /* position: absolute;
+    top: 20px;
+    left: 20px; */
+    background-color: #9b59b6;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 3px 1px black;
+    color: white;
 }
 
 .login-container {
     color: white;
-    height: 60%;
+    height: 40%;
     width: 35%;
     display: flex;
+    align-self: center;
     flex-direction: column;
     align-items: center;
     background-color: #9b59b6;
@@ -22,7 +33,6 @@
 
 .login-container h5 {
     text-align: center;
-    margin-bottom: 30px;
 }
 
 .login-container form {

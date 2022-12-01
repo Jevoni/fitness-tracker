@@ -11,7 +11,8 @@
 }
 
 .header .app-name {
-    font-size: 22px
+    font-size: 22px;
+    font-weight: 550;
 }
 
 .header .log-out {
@@ -21,6 +22,10 @@
     border: none;
     padding: 0 !important;
     font-size: 15px;
+}
+
+.header .log-out.visible {
+    display: none;
 }
 
 .header .log-out:hover {

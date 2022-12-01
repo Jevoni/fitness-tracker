@@ -11,7 +11,7 @@ import LoadingSpinner from '../components/LoadingSpinner'
 import styles from './styles/Cardio.module.css'
 
 const Cardio = () => {
-    const { setIsHome, authTokens } = useContext(AuthContext)
+    const { authTokens } = useContext(AuthContext)
     const [totalCardio, setTotalCardio] = useState(null)
     const [response, setResponse] = useState(null)
 
@@ -29,7 +29,6 @@ const Cardio = () => {
             setTotalCardio(data)
         }
         getLog()
-        setIsHome(true)
         console.log('Cardio (useEffect)')
     }, [])
 

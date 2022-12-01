@@ -1,19 +1,26 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { MdOutlineSummarize } from 'react-icons/md'
+import { CiDumbbell } from 'react-icons/ci'
+import { BiRun } from 'react-icons/bi'
+import { CgPill } from 'react-icons/cg'
 import { Box } from '@mui/material'
+import AuthContext from '../context/AuthContext'
 
 import SidebarButton from '../components/SidebarButton'
 import ProfilePicture from '../components/ProfilePicture'
 
 import styles from './styles/Sidebar.module.css'
 
-const Sidebar = (display) => {
+const Sidebar = () => {
+    const { user } = useContext(AuthContext)
+
     return (
-        <Box className={styles.sidebar} display={display}>
+        <Box className={styles.sidebar} display={user ? 'flex' : 'none'}>
             <Box className={styles['button-container']}>
-                <SidebarButton text='Summary' value='summary' />
-                <SidebarButton text='Weight Training' value='weights' />
-                <SidebarButton text='Cardio' value='cardio' />
-                <SidebarButton text='Supplements' value='supplements' />
+                <SidebarButton icon={<MdOutlineSummarize size={30} />} text='Summary' value='summary' />
+                <SidebarButton icon={<CiDumbbell size={30} />} text='Weight Training' value='weights' />
+                <SidebarButton icon={<BiRun size={30} />} text='Cardio' value='cardio' />
+                <SidebarButton icon={<CgPill size={28} />} text='Supplements' value='supplements' />
             </Box>
             <ProfilePicture />
         </Box>
