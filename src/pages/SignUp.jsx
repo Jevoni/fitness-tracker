@@ -6,37 +6,39 @@ import AuthContext from '../context/AuthContext'
 import styles from './styles/SignUp.module.css'
 
 const SignUp = () => {
-    const { loginUser, authTokens } = useContext(AuthContext)
+    const { loginUser } = useContext(AuthContext)
     const [firstName, setFirstName] = useState('')
     const [lastName, setLastName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
 
-    useEffect(() => {
-        const getLog = async () => {
-            const response = await fetch('http://127.0.0.1:8000/api/register/', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': 'Bearer ' + String(authTokens?.access)
-                },
-                body: JSON.stringify({
-                    'firstName': firstName,
-                    'lastName': lastName,
-                    'email': email,
-                    'password1': password,
-                    'password2': confirmPassword,
-                })
+    const signUpHandler = async (e) => {
+        e.preventDefault()
+
+        const response = await fetch('http://127.0.0.1:8000/api/register/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                'first_name': firstName,
+                'last_name': lastName,
+                'email': email,
+                'password1': password,
+                'password2': confirmPassword,
             })
-        }
-        console.log('useEffect (SignUp)')
-    }, [])
+        })
+
+        console.log(response.status)
+        // console.log('useEffect (SignUp)')
+    }
+
 
     return (
         <Box className={`${styles['page']}`}>
             <Box className={`${styles['signup-container']}`}>
-                <form onSubmit={loginUser} className={`${styles['signup-container']}form`}>
+                <form onSubmit={signUpHandler} className={`${styles['signup-container']}form`}>
                     <input
                         type='text'
                         value={firstName}
