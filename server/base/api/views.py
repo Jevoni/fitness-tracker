@@ -8,7 +8,8 @@ from rest_framework_simplejwt.views import TokenObtainPairView
 from base .models import User,Weight,Cardio,Supplement
 from .serializers import WeightSerializer,CardioSerializer,SupplementSerializer
 from base .forms import UserCreateForm,WeightForm,CardioForm,SupplementForm
-from rest_framework import generics
+
+from django.contrib import messages
 
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
     @classmethod
@@ -49,11 +50,12 @@ def registerPage(request):
         form = UserCreateForm(request.data)
         print(form.is_valid())
         if form.is_valid():
-            user = form.save()
+            user = form.save(commit=False)
+            user.email = user.email.lower()
+            user.save()
             # MyTokenObtainPairSerializer.get_token(user)
-            # user = form.save(commit=False)
-            # user.email = user.email.lower()
-            # user.save()
+        else:
+            messages.error(request, 'an error occured during sign up')
         return Response()
 
 
@@ -63,12 +65,14 @@ def registerPage(request):
 @permission_classes([IsAuthenticated])
 def weight(request):
     user = request.user
-    weights = user.weight_set.all()
+    weights = user.weight_set.all().order_by('date')
     serializer = WeightSerializer(weights, many = True)
     if request.method == "POST":
         form = WeightForm(request.data)
         if form.is_valid():
-            form.save()
+            weighto = form.save(commit=False)
+            weighto.user = request.user
+            weighto.save()
         return Response(serializer.data)
     return Response(serializer.data)
 
@@ -92,13 +96,15 @@ def modifyWeight(request,pk):
 @permission_classes([IsAuthenticated])
 def cardio(request):
     user = request.user
-    cardios = user.cardio_set.all()
+    cardios = user.cardio_set.all().order_by('date')
     serializer = CardioSerializer(cardios, many = True)
     if request.method == "POST":
         print(request.data)
         form = CardioForm(request.data)
         if form.is_valid():
-            form.save()
+            cardioo = form.save(commit=False)
+            cardioo.user = request.user
+            cardioo.save()
         return Response(serializer.data)
     return Response(serializer.data)
 
@@ -122,13 +128,15 @@ def modifyCardio(request,pk):
 @permission_classes([IsAuthenticated])
 def supplement(request):
     user = request.user
-    supplements = user.supplement_set.all()
+    supplements = user.supplement_set.all().order_by('date')
     serializer = SupplementSerializer(supplements, many = True)
     if request.method == "POST":
         print(request.data)
         form = SupplementForm(request.data)
         if form.is_valid():
-            form.save()
+            supplemento = form.save(commit=False)
+            supplemento.user = request.user
+            supplemento.save()
         return Response(serializer.data)
     return Response(serializer.data)
 
