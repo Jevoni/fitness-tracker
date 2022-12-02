@@ -4,7 +4,7 @@ from base .models import User,Weight,Cardio,Supplement
 class UserSerializer(ModelSerializer):
     class Meta:
         model = User
-        fields = ['first_name','last_name','email','password1','password2']
+        fields = ['first_name','last_name','email']
 
 class WeightSerializer(ModelSerializer):
     class Meta:

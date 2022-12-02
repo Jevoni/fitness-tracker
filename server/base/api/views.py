@@ -62,15 +62,14 @@ def registerPage(request):
 @permission_classes([IsAuthenticated])
 def profilePage(request):
     user = request.user
-    info = user.user_set.all()
-    serializer = UserSerializer(info)
+    serializer = UserSerializer(user)
     if request.method == 'POST':
         form = UserCreateForm(request.data)
         if form.is_valid():
             formo = form.save(commit=False)
             formo.email = formo.email.lower()
             formo.save()
-        return Response(serializer.data)
+        return Response()
     return Response(serializer.data)
 
 #weight views
