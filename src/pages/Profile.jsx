@@ -48,6 +48,7 @@ const Profile = () => {
             const data = await response.json()
             setProfile(data)
         }
+        getProfileDetails()
         console.log('Profile (useEffect)')
     }, [])
 
