@@ -64,7 +64,7 @@ def profilePage(request):
     user = request.user
     serializer = UserSerializer(user)
     if request.method == 'POST':
-        form = UserCreateForm(request.data)
+        form = UserCreateForm(request.data, instance = user)
         if form.is_valid():
             formo = form.save(commit=False)
             formo.email = formo.email.lower()

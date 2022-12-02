@@ -41,17 +41,21 @@ const Supplements = () => {
     return (
         <Body>
             <Typography variant='h5' className={`${styles['title']}`}>Supplements</Typography>
-            <SupplementsInput
-                setTotalSupplements={setTotalSupplements}
-            />
-            <Box className={styles['supplements-log-container']}>
-                {totalSupplements?.map((supplementsLog) =>
-                    <SupplementsLog
-                        key={supplementsLog.id}
-                        supplementsLog={supplementsLog}
-                        setTotalSupplements={setTotalSupplements}
-                    />
-                )}
+            <Box sx={{ width: '98%' }}>
+                <SupplementsInput
+                    setTotalSupplements={setTotalSupplements}
+                />
+            </Box>
+            <Box sx={{ width: '95%' }}>
+                <Box className={styles['supplements-log-container']}>
+                    {totalSupplements?.map((supplementsLog) =>
+                        <SupplementsLog
+                            key={supplementsLog.id}
+                            supplementsLog={supplementsLog}
+                            setTotalSupplements={setTotalSupplements}
+                        />
+                    )}
+                </Box>
             </Box>
         </Body>
     )

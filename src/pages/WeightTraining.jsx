@@ -41,18 +41,23 @@ const WeightTraining = () => {
     return (
         <Body>
             <Typography sx={{ fontSize: '23px' }} className={`${styles['title']}`}>Weight Training</Typography>
-            <WorkoutInput
-                setTotalWorkouts={setTotalWorkouts}
-            />
-            <Box className={styles['workout-log-container']}>
-                {totalWorkouts?.map((workoutLog) =>
-                    <WorkoutLog
-                        key={workoutLog.id}
-                        workoutLog={workoutLog}
-                        setTotalWorkouts={setTotalWorkouts}
-                    />
-                )}
+            <Box sx={{ width: '98%' }}>
+                <WorkoutInput
+                    setTotalWorkouts={setTotalWorkouts}
+                />
             </Box>
+            <Box sx={{ width: '95%' }}>
+                <Box className={styles['workout-log-container']}>
+                    {totalWorkouts?.map((workoutLog) =>
+                        <WorkoutLog
+                            key={workoutLog.id}
+                            workoutLog={workoutLog}
+                            setTotalWorkouts={setTotalWorkouts}
+                        />
+                    )}
+                </Box>
+            </Box>
+
         </Body>
     )
 }

@@ -8,6 +8,7 @@
     height: 45px;
     padding-left: 25px;
     padding-right: 25px;
+    border-bottom: 1px solid black;
 }
 
 .header .app-name {
