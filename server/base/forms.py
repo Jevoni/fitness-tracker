@@ -7,6 +7,11 @@ class UserCreateForm(UserCreationForm):
         model = User
         fields = ['first_name','last_name','email','password1','password2']
 
+class UserUpdateForm(ModelForm):
+    class Meta:
+        model = User
+        fields = ['first_name','last_name','email']
+
 class WeightForm(ModelForm):
     class Meta:
         model = Weight

@@ -7,7 +7,7 @@ from rest_framework_simplejwt.views import TokenObtainPairView
 
 from base .models import User,Weight,Cardio,Supplement
 from .serializers import UserSerializer,WeightSerializer,CardioSerializer,SupplementSerializer
-from base .forms import UserCreateForm,WeightForm,CardioForm,SupplementForm
+from base .forms import UserCreateForm,UserUpdateForm,WeightForm,CardioForm,SupplementForm
 
 from django.contrib import messages
 
@@ -64,7 +64,7 @@ def profilePage(request):
     user = request.user
     serializer = UserSerializer(user)
     if request.method == 'POST':
-        form = UserCreateForm(request.data, instance = user)
+        form = UserUpdateForm(data = request.data, instance = user)
         if form.is_valid():
             formo = form.save(commit=False)
             formo.email = formo.email.lower()
