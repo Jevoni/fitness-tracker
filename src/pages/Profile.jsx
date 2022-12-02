@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState, useEffect, useContext, useRef, useMemo } from 'react'
 import { Box, Typography, Button } from '@mui/material'
 import DefaultUserPic from '../media/user.png'
 
@@ -7,101 +7,111 @@ import AuthContext from '../context/AuthContext'
 import Body from '../layout/Body'
 
 import styles from './styles/Profile.module.css'
+import ProfileForm from '../components/ProfileForm'
 
 const Profile = () => {
     const { authTokens } = useContext(AuthContext)
-    const [firstName, setFirstName] = useState('')
-    const [lastName, setLastName] = useState('')
-    const [email, setEmail] = useState('')
+    const [profile, setProfile] = useState(null)
+    const profileRef = useRef()
+    profileRef.current = profile
+
+    const [firstName, setFirstName] = useState(null)
+    const [lastName, setLastName] = useState(null)
+    const [email, setEmail] = useState(null)
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
-    const [profile, setProfile] = useState('')
+    const [edit, setEdit] = useState(null)
 
-    const onSubmitHandler = async () => {
+    const getProfileDetails = async () => {
         const response = await fetch('http://127.0.0.1:8000/api/profile/', {
-            method: 'POST',
+            method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': 'Bearer ' + String(authTokens?.access)
             },
-            body: JSON.stringify({
-                'first_name': firstName,
-                'last_name': lastName,
-                'email': email,
-                'password1': password,
-                'password2': confirmPassword,
-            })
         })
         const data = await response.json()
-        alert('Changes Submitted!')
+        setProfile(data)
+        setFirstName(profileRef.current?.first_name)
+        setLastName(profileRef.current?.last_name)
+        setEmail(profileRef.current?.email)
+        console.log(profileRef.current)
     }
 
+
     useEffect(() => {
-        const getProfileDetails = async () => {
-            const response = await fetch('http://127.0.0.1:8000/api/profile/', {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': 'Bearer ' + String(authTokens?.access)
-                },
-            })
-            const data = await response.json()
-            setProfile(data)
-        }
         getProfileDetails()
         console.log('Profile (useEffect)')
     }, [])
 
-    return (
-        <Body>
-            <Box className={styles.content}>
-                <Box className={`${styles['signup-container']}`}>
-                    <form onSubmit={onSubmitHandler} className={`${styles['signup-container']}form`}>
-                        <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '30%', width: '100%', marginBottom: '30px' }}>
-                            <Box sx={{ height: '100%', width: '20%', backgroundColor: '#dbc3e4', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', border: '1px solid black' }}>
-                                <Box component='img' src={DefaultUserPic} height='50%' />
+
+    if (!edit) {
+        return (
+            <Body>
+                <Box className={styles.content}>
+                    <Box className={`${styles['signup-container']}`}>
+                        <Box sx={{ display: 'flex', flexDirection: 'column', width: '70%', height: '85%' }}>
+                            <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '30%', width: '100%', marginBottom: '30px' }}>
+                                <Box sx={{ height: '100%', width: '20%', backgroundColor: '#dbc3e4', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', border: '1px solid black' }}>
+                                    <Box component='img' src={DefaultUserPic} height='50%' />
+                                </Box>
                             </Box>
+                            <div>
+                                <label for="firstName">First Name: </label>
+                                <input
+                                    readOnly
+                                    name='firstName'
+                                    type='text'
+                                    value={firstName}
+                                    style={{ height: '35px', fontSize: '15px', marginBottom: '2px' }}
+                                />
+                            </div>
+                            <div>
+                                <label for="lastName">Last Name: </label>
+                                <input
+                                    readOnly
+                                    name='lastName'
+                                    type='text'
+                                    value={lastName}
+                                    style={{ height: '35px', fontSize: '15px', marginBottom: '2px', marginTop: '2px' }}
+                                />
+                            </div>
+                            <div>
+                                <label for="email">Email: </label>
+                                <input
+                                    readOnly
+                                    type='email'
+                                    name='email'
+                                    value={email}
+                                    autoComplete='username'
+                                    style={{ height: '35px', fontSize: '15px', marginBottom: '2px', marginTop: '2px' }}
+                                />
+                            </div>
+                            {/* <input
+                                readOnly
+                                type='password'
+                                name='password'
+                                value={password}
+                                placeholder='Password'
+                                autoComplete='new-password'
+                                onChange={(e) => setPassword(e.target.value)}
+                                style={{ height: '35px', fontSize: '15px', marginTop: '2px', marginBottom: '2px' }} /> */}
+                            <Button variant='filled' onClick={() => setEdit(true)} className={`${styles['login-container']}button`}>Edit Profile</Button>
                         </Box>
-                        <input
-                            type='text'
-                            value={firstName}
-                            placeholder={profile['first_name']}
-                            onChange={(e) => setFirstName(e.target.value)}
-                            style={{ height: '35px', fontSize: '15px', marginBottom: '2px' }} />
-                        <input
-                            type='text'
-                            value={lastName}
-                            placeholder={profile['last_name']}
-                            onChange={(e) => setLastName(e.target.value)}
-                            style={{ height: '35px', fontSize: '15px', marginBottom: '2px', marginTop: '2px' }} />
-                        <input
-                            type='email'
-                            name='email'
-                            value={email}
-                            placeholder={profile['email']}
-                            autoComplete='username'
-                            onChange={(e) => setEmail(e.target.value)}
-                            style={{ height: '35px', fontSize: '15px', marginBottom: '2px', marginTop: '2px' }} />
-                        <input
-                            type='password'
-                            name='password'
-                            value={password}
-                            placeholder='New Password'
-                            autoComplete='new-password'
-                            onChange={(e) => setPassword(e.target.value)}
-                            style={{ height: '35px', fontSize: '15px', marginTop: '2px', marginBottom: '2px' }} />
-                        <input
-                            type='password'
-                            value={confirmPassword}
-                            placeholder='Confirm New Password'
-                            autoComplete='new-password'
-                            onChange={(e) => setConfirmPassword(e.target.value)}
-                            style={{ height: '35px', fontSize: '15px', marginTop: '2px' }} />
-                        <Button variant='filled' type="submit" className={`${styles['login-container']}button`}>Confirm Changes</Button>
-                    </form>
+                    </Box>
                 </Box>
-            </Box>
-        </Body>
+            </Body>
+        )
+    }
+
+    return (
+        <ProfileForm
+            firstName={firstName}
+            lastName={lastName}
+            email={email}
+            setEdit={setEdit}
+            getProfileDetails={getProfileDetails}
+        />
     )
 }
 

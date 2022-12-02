@@ -41,17 +41,21 @@ const Cardio = () => {
     return (
         <Body>
             <Typography variant='h5' className={`${styles['title']}`}>Cardio</Typography>
-            <CardioInput
-                setTotalCardio={setTotalCardio}
-            />
-            <Box className={styles['cardio-log-container']}>
-                {totalCardio?.map((cardioLog) =>
-                    <CardioLog
-                        key={cardioLog.id}
-                        cardioLog={cardioLog}
-                        setTotalCardio={setTotalCardio}
-                    />
-                )}
+            <Box sx={{ width: '98%' }}>
+                <CardioInput
+                    setTotalCardio={setTotalCardio}
+                />
+            </Box>
+            <Box sx={{ width: '95%' }}>
+                <Box className={styles['cardio-log-container']}>
+                    {totalCardio?.map((cardioLog) =>
+                        <CardioLog
+                            key={cardioLog.id}
+                            cardioLog={cardioLog}
+                            setTotalCardio={setTotalCardio}
+                        />
+                    )}
+                </Box>
             </Box>
         </Body>
     )

@@ -53,36 +53,38 @@ const Summary = () => {
 
     return (
         <Body sx={{ backgroundColor: 'white' }}>
-            <Typography sx={{ fontSize: '23px' }} className={`${styles['title']}`}>Summary</Typography>
-            <Box sx={{ display: 'flex', flexDirection: 'column-reverse' }}>
-                {totalWeight?.slice(totalWeight.length - 3, totalWeight.length)?.map((workoutLog) =>
-                    <SummaryLog
-                        key={workoutLog.id}
-                        workoutLog={workoutLog}
-                        setTotalWorkouts={setTotalWeight}
-                        type='weight'
-                    />
-                )}
-            </Box>
-            <Box sx={{ display: 'flex', flexDirection: 'column-reverse', marginTop: '40px' }}>
-                {totalCardio?.slice(totalCardio.length - 3, totalCardio.length)?.map((workoutLog) =>
-                    <SummaryLog
-                        key={workoutLog.id}
-                        workoutLog={workoutLog}
-                        setTotalWorkouts={setTotalSupps}
-                        type='cardio'
-                    />
-                )}
-            </Box>
-            <Box sx={{ display: 'flex', flexDirection: 'column-reverse', marginTop: '40px' }}>
-                {totalSupps?.slice(totalSupps.length - 3, totalSupps.length)?.map((workoutLog) =>
-                    <SummaryLog
-                        key={workoutLog.id}
-                        workoutLog={workoutLog}
-                        setTotalWorkouts={setTotalCardio}
-                        type='supplement'
-                    />
-                )}
+            <Box sx={{ width: '95%' }}>
+                <Typography sx={{ fontSize: '23px' }} className={`${styles['title']}`}>Summary</Typography>
+                <Box sx={{ display: 'flex', flexDirection: 'column-reverse' }}>
+                    {totalWeight?.slice(totalWeight.length - 3, totalWeight.length)?.map((workoutLog) =>
+                        <SummaryLog
+                            key={workoutLog.id}
+                            workoutLog={workoutLog}
+                            setTotalWorkouts={setTotalWeight}
+                            type='weight'
+                        />
+                    )}
+                </Box>
+                <Box sx={{ display: 'flex', flexDirection: 'column-reverse', marginTop: '40px' }}>
+                    {totalCardio?.slice(totalCardio.length - 3, totalCardio.length)?.map((workoutLog) =>
+                        <SummaryLog
+                            key={workoutLog.id}
+                            workoutLog={workoutLog}
+                            setTotalWorkouts={setTotalSupps}
+                            type='cardio'
+                        />
+                    )}
+                </Box>
+                <Box sx={{ display: 'flex', flexDirection: 'column-reverse', marginTop: '40px' }}>
+                    {totalSupps?.slice(totalSupps.length - 3, totalSupps.length)?.map((workoutLog) =>
+                        <SummaryLog
+                            key={workoutLog.id}
+                            workoutLog={workoutLog}
+                            setTotalWorkouts={setTotalCardio}
+                            type='supplement'
+                        />
+                    )}
+                </Box>
             </Box>
         </Body>
     )
