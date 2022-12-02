@@ -1,4 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import { Box, Typography, Button } from '@mui/material'
 import AuthContext from '../context/AuthContext'
@@ -7,6 +8,7 @@ import styles from './styles/SignUp.module.css'
 
 const SignUp = () => {
     const { loginUser } = useContext(AuthContext)
+    const navigate = useNavigate()
     const [firstName, setFirstName] = useState('')
     const [lastName, setLastName] = useState('')
     const [email, setEmail] = useState('')
@@ -29,6 +31,11 @@ const SignUp = () => {
                 'password2': confirmPassword,
             })
         })
+
+        if (response.status === 200) {
+            alert('User created')
+            navigate('/')
+        }
 
         console.log(response.status)
         // console.log('useEffect (SignUp)')
