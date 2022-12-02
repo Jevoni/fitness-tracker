@@ -15,12 +15,39 @@ const Profile = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
+    const [profile, setProfile] = useState('')
 
-    const onSubmitHandler = () => {
+    const onSubmitHandler = async () => {
+        const response = await fetch('http://127.0.0.1:8000/api/profile/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + String(authTokens?.access)
+            },
+            body: JSON.stringify({
+                'first_name': firstName,
+                'last_name': lastName,
+                'email': email,
+                'password1': password,
+                'password2': confirmPassword,
+            })
+        })
+        const data = await response.json()
         alert('Changes Submitted!')
     }
 
     useEffect(() => {
+        const getProfileDetails = async () => {
+            const response = await fetch('http://127.0.0.1:8000/api/profile/', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + String(authTokens?.access)
+                },
+            })
+            const data = await response.json()
+            setProfile(data)
+        }
         console.log('Profile (useEffect)')
     }, [])
 
@@ -37,20 +64,20 @@ const Profile = () => {
                         <input
                             type='text'
                             value={firstName}
-                            placeholder='First Name'
+                            placeholder={profile['first_name']}
                             onChange={(e) => setFirstName(e.target.value)}
                             style={{ height: '35px', fontSize: '15px', marginBottom: '2px' }} />
                         <input
                             type='text'
                             value={lastName}
-                            placeholder='Last Name'
+                            placeholder={profile['last_name']}
                             onChange={(e) => setLastName(e.target.value)}
                             style={{ height: '35px', fontSize: '15px', marginBottom: '2px', marginTop: '2px' }} />
                         <input
                             type='email'
                             name='email'
                             value={email}
-                            placeholder='Email'
+                            placeholder={profile['email']}
                             autoComplete='username'
                             onChange={(e) => setEmail(e.target.value)}
                             style={{ height: '35px', fontSize: '15px', marginBottom: '2px', marginTop: '2px' }} />
@@ -58,14 +85,14 @@ const Profile = () => {
                             type='password'
                             name='password'
                             value={password}
-                            placeholder='Password'
+                            placeholder='New Password'
                             autoComplete='new-password'
                             onChange={(e) => setPassword(e.target.value)}
                             style={{ height: '35px', fontSize: '15px', marginTop: '2px', marginBottom: '2px' }} />
                         <input
                             type='password'
                             value={confirmPassword}
-                            placeholder='Confirm Password'
+                            placeholder='Confirm New Password'
                             autoComplete='new-password'
                             onChange={(e) => setConfirmPassword(e.target.value)}
                             style={{ height: '35px', fontSize: '15px', marginTop: '2px' }} />
