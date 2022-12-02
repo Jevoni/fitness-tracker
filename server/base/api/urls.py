@@ -14,6 +14,8 @@ urlpatterns = [
     path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 
     path('register/',views.registerPage),
+    path('profile/', views.profilePage),
+
     path('weight/',views.weight),
     path('weight/<str:pk>/',views.modifyWeight),
 

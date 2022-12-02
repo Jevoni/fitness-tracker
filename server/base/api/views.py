@@ -6,7 +6,7 @@ from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
 
 from base .models import User,Weight,Cardio,Supplement
-from .serializers import WeightSerializer,CardioSerializer,SupplementSerializer
+from .serializers import UserSerializer,WeightSerializer,CardioSerializer,SupplementSerializer
 from base .forms import UserCreateForm,WeightForm,CardioForm,SupplementForm
 
 from django.contrib import messages
@@ -53,11 +53,25 @@ def registerPage(request):
             user = form.save(commit=False)
             user.email = user.email.lower()
             user.save()
-            # MyTokenObtainPairSerializer.get_token(user)
+            MyTokenObtainPairSerializer.get_token(user)
         else:
             messages.error(request, 'an error occured during sign up')
         return Response()
 
+@api_view(['GET','POST'])
+@permission_classes([IsAuthenticated])
+def profilePage(request):
+    user = request.user
+    info = user.user_set.all()
+    serializer = UserSerializer(info)
+    if request.method == 'POST':
+        form = UserCreateForm(request.data)
+        if form.is_valid():
+            formo = form.save(commit=False)
+            formo.email = formo.email.lower()
+            formo.save()
+        return Response(serializer.data)
+    return Response(serializer.data)
 
 #weight views
 
