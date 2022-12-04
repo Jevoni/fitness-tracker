@@ -51,6 +51,10 @@
     margin-right: 1.5px;
 }
 
+.signup-container .button-edit:hover {
+    background-color: orange;
+}
+
 .button-container .button-add {
     font-weight: bold;
     color: black;
@@ -64,6 +68,10 @@
     margin-right: 1.5px;
 }
 
+.button-container .button-add:hover {
+    background-color: lightgreen;
+}
+
 .button-container .button-cancel {
     font-weight: bold;
     color: black;
@@ -75,6 +83,10 @@
     text-transform: none;
     margin-left: 1.5px;
     margin-right: 1.5px;
+}
+
+.button-container .button-cancel:hover {
+    background-color: lightcoral;
 }
 
 /* .signup-container button:hover {
