@@ -41,7 +41,7 @@ const Profile = () => {
 
     useEffect(() => {
         getProfileDetails()
-        console.log('Profile (useEffect)')
+        console.log('Profile (useEffect) main')
     }, [])
 
 
@@ -50,44 +50,45 @@ const Profile = () => {
             <Body>
                 <Box className={styles.content}>
                     <Box className={`${styles['signup-container']}`}>
-                        <Box sx={{ display: 'flex', flexDirection: 'column', width: '70%', height: '85%' }}>
+                        <Box sx={{ display: 'flex', flexDirection: 'column', width: '70%', height: '85%', alignItems: 'center', }}>
                             <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '30%', width: '100%', marginBottom: '30px' }}>
                                 <Box sx={{ height: '100%', width: '20%', backgroundColor: '#dbc3e4', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', border: '1px solid black' }}>
                                     <Box component='img' src={DefaultUserPic} height='50%' />
                                 </Box>
                             </Box>
-                            <div>
-                                <label for="firstName">First Name: </label>
-                                <input
-                                    readOnly
-                                    name='firstName'
-                                    type='text'
-                                    value={firstName}
-                                    style={{ height: '35px', fontSize: '15px', marginBottom: '2px' }}
-                                />
-                            </div>
-                            <div>
-                                <label for="lastName">Last Name: </label>
-                                <input
-                                    readOnly
-                                    name='lastName'
-                                    type='text'
-                                    value={lastName}
-                                    style={{ height: '35px', fontSize: '15px', marginBottom: '2px', marginTop: '2px' }}
-                                />
-                            </div>
-                            <div>
-                                <label for="email">Email: </label>
-                                <input
-                                    readOnly
-                                    type='email'
-                                    name='email'
-                                    value={email}
-                                    autoComplete='username'
-                                    style={{ height: '35px', fontSize: '15px', marginBottom: '2px', marginTop: '2px' }}
-                                />
-                            </div>
-                            {/* <input
+                            <Box style={{ display: 'flex', width: '100%', flexDirection: 'column', alignItems: 'center' }}>
+                                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '50%' }}>
+                                    <label for="firstName">First Name: </label>
+                                    <input
+                                        readOnly
+                                        name='firstName'
+                                        type='text'
+                                        value={profileRef.current?.first_name}
+                                        style={{ height: '35px', fontSize: '15px', marginBottom: '2px', width: '60%' }}
+                                    />
+                                </div>
+                                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '50%' }}>
+                                    <label for="lastName">Last Name: </label>
+                                    <input
+                                        readOnly
+                                        name='lastName'
+                                        type='text'
+                                        value={profileRef.current?.last_name}
+                                        style={{ height: '35px', fontSize: '15px', marginBottom: '2px', marginTop: '2px', width: '60%' }}
+                                    />
+                                </div>
+                                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '50%' }}>
+                                    <label for="email">Email: </label>
+                                    <input
+                                        readOnly
+                                        type='email'
+                                        name='email'
+                                        value={profileRef.current?.email}
+                                        autoComplete='username'
+                                        style={{ height: '35px', fontSize: '15px', marginBottom: '2px', marginTop: '2px', width: '60%' }}
+                                    />
+                                </div>
+                                {/* <input
                                 readOnly
                                 type='password'
                                 name='password'
@@ -96,7 +97,8 @@ const Profile = () => {
                                 autoComplete='new-password'
                                 onChange={(e) => setPassword(e.target.value)}
                                 style={{ height: '35px', fontSize: '15px', marginTop: '2px', marginBottom: '2px' }} /> */}
-                            <Button variant='filled' onClick={() => setEdit(true)} className={`${styles['login-container']}button`}>Edit Profile</Button>
+                            </Box>
+                            <Button variant='filled' onClick={() => setEdit(true)} className={`${styles['button-edit']}`}>Edit Profile</Button>
                         </Box>
                     </Box>
                 </Box>

@@ -29,9 +29,17 @@ const ProfileForm = ({ firstName, lastName, email, setEdit, getProfileDetails })
             })
         })
         alert('Changes Submitted!')
-        getProfileDetails()
         setEdit(false)
+        getProfileDetails()
     }
+
+    useEffect(() => {
+        getProfileDetails()
+        setNewFirst(firstName)
+        setNewLast(lastName)
+        setNewMail(email)
+        console.log('useEffect (Profile) second')
+    }, [firstName, lastName, email])
 
     return (
         <Body>
@@ -43,36 +51,37 @@ const ProfileForm = ({ firstName, lastName, email, setEdit, getProfileDetails })
                                 <Box component='img' src={DefaultUserPic} height='50%' />
                             </Box>
                         </Box>
-                        <div>
-                            <label for="firstName">First Name: </label>
-                            <input
-                                type='text'
-                                value={newFirst}
-                                onChange={(e) => setNewFirst(e.target.value)}
-                                style={{ height: '35px', fontSize: '15px', marginBottom: '2px' }}
-                            />
-                        </div>
-                        <div>
-                            <label for="lastName">Last Name: </label>
-                            <input
-                                type='text'
-                                value={newLast}
-                                placeholder
-                                onChange={(e) => setNewLast(e.target.value)}
-                                style={{ height: '35px', fontSize: '15px', marginBottom: '2px', marginTop: '2px' }}
-                            />
-                        </div>
-                        <div>
-                            <label for="email">Email: </label>
-                            <input
-                                type='email'
-                                name='email'
-                                value={newMail}
-                                onChange={(e) => setNewMail(e.target.value)}
-                                style={{ height: '35px', fontSize: '15px', marginBottom: '2px', marginTop: '2px' }}
-                            />
-                        </div>
-                        {/* <input
+                        <Box style={{ display: 'flex', width: '100%', flexDirection: 'column', alignItems: 'center' }}>
+                            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '50%' }}>
+                                <label for="firstName">First Name: </label>
+                                <input
+                                    type='text'
+                                    value={newFirst}
+                                    onChange={(e) => setNewFirst(e.target.value)}
+                                    style={{ height: '35px', fontSize: '15px', marginBottom: '2px', width: '60%' }}
+                                />
+                            </div>
+                            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '50%' }}>
+                                <label for="lastName">Last Name: </label>
+                                <input
+                                    type='text'
+                                    value={newLast}
+                                    placeholder
+                                    onChange={(e) => setNewLast(e.target.value)}
+                                    style={{ height: '35px', fontSize: '15px', marginBottom: '2px', marginTop: '2px', width: '60%' }}
+                                />
+                            </div>
+                            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '50%' }}>
+                                <label for="email">Email: </label>
+                                <input
+                                    type='email'
+                                    name='email'
+                                    value={newMail}
+                                    onChange={(e) => setNewMail(e.target.value)}
+                                    style={{ height: '35px', fontSize: '15px', marginBottom: '2px', marginTop: '2px', width: '60%' }}
+                                />
+                            </div>
+                            {/* <input
                             type='password'
                             name='password'
                             value={password}
@@ -87,9 +96,10 @@ const ProfileForm = ({ firstName, lastName, email, setEdit, getProfileDetails })
                             autoComplete='new-password'
                             onChange={(e) => setConfirmPassword(e.target.value)}
                             style={{ height: '35px', fontSize: '15px', marginTop: '2px' }} /> */}
-                        <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-                            <Button variant='filled' type="submit" className={`${styles['login-container']}button`}>Confirm Changes</Button>
-                            <Button onClick={() => setEdit(false)}>Cancel Changes</Button>
+                        </Box>
+                        <Box className={`${styles['button-container']}`} sx={{ display: 'flex', justifyContent: 'center' }}>
+                            <Button variant='filled' type="submit" className={`${styles['button-add']}`}>Confirm</Button>
+                            <Button className={`${styles['login-container']} ${styles['button-cancel']}`} onClick={() => setEdit(false)}>Cancel</Button>
                         </Box>
                     </form>
                 </Box>
