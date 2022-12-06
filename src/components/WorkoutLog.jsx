@@ -48,6 +48,7 @@ const WorkoutLog = ({ workoutLog, setTotalWorkouts }) => {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + String(authTokens?.access)
             },
             body: JSON.stringify({
                 'date': date,
@@ -59,6 +60,7 @@ const WorkoutLog = ({ workoutLog, setTotalWorkouts }) => {
 
         if (response.status === 201 || 200) {
             console.log('Workout Edited!')
+            console.log(response.status)
         }
 
         const getLog = async () => {
