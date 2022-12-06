@@ -31,8 +31,8 @@ Weight Training page allows user to log:
 <ul>
 <li>Date</li>
 <li>Specified Exercise</li>
-<li>Avgerage Reps</li>
-<li>Avgerage Sets</li>
+<li>Average Reps</li>
+<li>Average Sets</li>
 </ul>
 
 ![Fitness Tracker](./src/media/Weights.png)
