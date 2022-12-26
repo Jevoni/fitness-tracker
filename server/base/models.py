@@ -21,7 +21,7 @@ class User(AbstractUser):
 
 class Weight(models.Model):
 
-    user = models.ForeignKey(User,on_delete= models.CASCADE)
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
     date = models.DateField()
     name = models.CharField(max_length=200)
     reps = models.IntegerField()
