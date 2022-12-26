@@ -55,6 +55,7 @@ const WorkoutLog = ({ workoutLog, setTotalWorkouts }) => {
                 'name': name,
                 'reps': reps,
                 'sets': sets,
+                'id': workoutLog.id
             })
         })
 

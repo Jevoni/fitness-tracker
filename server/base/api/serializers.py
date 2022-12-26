@@ -9,15 +9,15 @@ class UserSerializer(ModelSerializer):
 class WeightSerializer(ModelSerializer):
     class Meta:
         model = Weight
-        fields = "__all__"
+        fields = ['date','name','reps','sets', 'id']
 
 class CardioSerializer(ModelSerializer):
     class Meta:
         model = Cardio
-        fields = "__all__"
+        fields = ['date', 'name', 'duration', 'id']
 
 class SupplementSerializer(ModelSerializer):
     class Meta:
         model = Supplement
-        fields = "__all__"
+        fields = ['date', 'name', 'dossage', 'id']
 
