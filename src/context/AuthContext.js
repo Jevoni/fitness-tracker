@@ -77,7 +77,7 @@ export const AuthProvider = ({ children }) => {
     }
 
     useEffect(() => {
-        const fourMinutes = 1000 * 60 * 1
+        const fourMinutes = 1000 * 60 * 4
         const interval = setInterval(() => {
             if (authTokenRef.current) {
                 updateToken()

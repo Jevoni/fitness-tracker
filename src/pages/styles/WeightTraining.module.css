@@ -1,9 +1,9 @@
 .title {
-    width: 100%;
-    text-align: center;
-    margin-top: 10px;
     font-size: 23px;
     font-weight: 350;
+    text-align: center;
+    padding-top: 5px;
+    width: 100%;
 }
 
 .workout-log-container {
@@ -17,4 +17,10 @@
     justify-content: center;
     height: 80vh;
     width: 85%;
+}
+
+@media screen and (max-width:600px) {
+    .title {
+        font-size: 20px;
+    }
 }

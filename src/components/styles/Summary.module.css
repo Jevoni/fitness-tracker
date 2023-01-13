@@ -51,3 +51,45 @@
     align-items: center;
     width: 100%;
 }
+
+.content-container p {
+    font-weight: 325;
+}
+
+.icon {
+    color: orange;
+    margin-left: 15px;
+}
+
+@media screen and (max-width: 600px) {
+    .icon {
+        margin: 4px;
+    }
+
+    .content-container {
+        justify-content: flex-start;
+    }
+
+    .content-container p {
+        font-size: 13px;
+        display: flex;
+        flex-direction: column;
+        width: 30%;
+        padding-left: 2px;
+        padding-right: 2px;
+    }
+
+    .content-container .numbers {
+        width: 20%;
+    }
+
+    .content-container.secondary p {
+        width: 33%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .workout-log {
+        height: 50px;
+    }
+}

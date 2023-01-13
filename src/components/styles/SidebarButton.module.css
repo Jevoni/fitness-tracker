@@ -2,13 +2,19 @@
     width: 90%;
     height: 70px;
     background-color: #9b59b6;
-    color: white;
+    color: black;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
     margin: 20px;
     border-radius: 6px;
     text-transform: none;
     border: 2px solid black;
+}
+
+@media screen and (max-width:1200px) {
+    .sidebar-button {
+        width: 75%
+    }
 }

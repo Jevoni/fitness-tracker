@@ -40,7 +40,7 @@ const Cardio = () => {
 
     return (
         <Body>
-            <Typography variant='h5' className={`${styles['title']}`}>Cardio</Typography>
+            <Typography className={`${styles['title']}`}>Cardio</Typography>
             <Box sx={{ width: '98%' }}>
                 <CardioInput
                     setTotalCardio={setTotalCardio}

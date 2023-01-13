@@ -20,7 +20,9 @@
 .login-container {
     color: white;
     height: 40%;
+    min-height: 270px;
     width: 35%;
+    max-width: 750px;
     display: flex;
     align-self: center;
     flex-direction: column;
@@ -54,9 +56,10 @@
     background-color: #dbc3e4;
     margin-top: 20px;
     align-self: center;
-    width: 30%;
+    width: 32%;
     border: 1px solid black;
     text-transform: none;
+    max-width: 106px;
 }
 
 .login-container button:hover {
@@ -71,4 +74,59 @@
     color: black;
     font-weight: bold;
     text-decoration-line: none;
+}
+
+@media screen and (max-width:500px) {
+    .login-container {
+        width: 90%;
+    }
+
+    .login-container button {
+        width: 40%;
+    }
+
+    .login-container form {
+        width: 82%;
+    }
+}
+
+@media screen and (max-width:600px) and (min-width: 501px) {
+    .login-container {
+        width: 80%;
+    }
+}
+
+@media screen and (max-width:1200px) and (min-width:601px) {
+    .login-container {
+        width: 60%;
+        min-height: 300px;
+    }
+}
+
+/* @media screen and (max-width:900px) and (min-width:601px) {
+    .login-container {
+        width: 65%;
+    }
+}
+
+@media screen and (max-width:1200px) and (min-width: 901px) {
+    .login-container {
+        width: 75%;
+    }
+} */
+
+@media screen and (max-width:1536px) and (min-width: 1201px) {
+    .login-container {
+        width: 40%;
+        height: 35%;
+        min-height: 300px;
+    }
+}
+
+@media screen and (min-width:1537px) {
+    .login-container {
+        max-width: 750px;
+        min-width: 550px;
+        min-height: 300px;
+    }
 }
