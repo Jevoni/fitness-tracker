@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react'
 import { Box, Typography, Button } from '@mui/material'
 import AuthContext from '../context/AuthContext'
+import { BsThreeDotsVertical } from 'react-icons/bs'
 
 import styles from './styles/Supplements.module.css'
 
@@ -73,25 +74,28 @@ const SupplementsLog = ({ supplementsLog, setTotalSupplements }) => {
 
     if (edit) {
         return (
-            <Box className={styles['supplements-log']}>
-                <Box>
+            <Box className={`${styles['supplements-log']} ${styles['inputbox']} ${styles['reverse']} `}>
+                <Box className={styles['button-container']}>
                     <Button className={styles['button-edit']} onClick={editWorkout}>Save</Button>
                     <Button className={styles['button-remove']} onClick={deleteWorkout}>Remove</Button>
                 </Box>
-                <Typography>Date: <input type='date' value={date} onChange={(e) => setDate(e.target.value)}></input></Typography>
-                <Typography>Supplement: <input value={supplement} onChange={(e) => setSupplement(e.target.value)}></input></Typography>
-                <Typography>Dossage: <input value={dossage} onChange={(e) => setDossage(e.target.value)}></input></Typography>
+                <Box className={styles['content-container']}>
+                    <Typography>Date: <input type='date' value={date} onChange={(e) => setDate(e.target.value)}></input></Typography>
+                    <Typography>Supplement: <input value={supplement} onChange={(e) => setSupplement(e.target.value)}></input></Typography>
+                    <Typography className={styles.numbers}>Dossage: <input value={dossage} onChange={(e) => setDossage(e.target.value)}></input></Typography>
+                </Box>
             </Box>
         )
     }
 
     return (
         <Box className={styles['supplements-log']}>
+            <BsThreeDotsVertical className={styles['vertical-button']} onClick={() => setEdit(true)} />
             <Button className={styles['button-edit']} onClick={() => setEdit(true)}>Edit</Button>
             <Box className={styles['content-container']}>
-                <Typography sx={{ fontWeight: 325 }}>Date: {date}</Typography>
-                <Typography sx={{ fontWeight: 325 }}>Supplement: {supplement}</Typography>
-                <Typography sx={{ fontWeight: 325 }}>Dossage: {dossage}</Typography>
+                <Typography><span>Date:</span> {date}</Typography>
+                <Typography><span>Supplement:</span> {supplement}</Typography>
+                <Typography><span>Dossage:</span> {dossage}</Typography>
             </Box>
         </Box>
     )

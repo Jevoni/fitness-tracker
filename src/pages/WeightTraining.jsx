@@ -40,7 +40,7 @@ const WeightTraining = () => {
 
     return (
         <Body>
-            <Typography sx={{ fontSize: '23px' }} className={`${styles['title']}`}>Weight Training</Typography>
+            <Typography className={`${styles['title']}`}>Weight Training</Typography>
             <Box sx={{ width: '98%' }}>
                 <WorkoutInput
                     setTotalWorkouts={setTotalWorkouts}
@@ -57,7 +57,6 @@ const WeightTraining = () => {
                     )}
                 </Box>
             </Box>
-
         </Body>
     )
 }

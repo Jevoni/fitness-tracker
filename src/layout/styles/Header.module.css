@@ -5,7 +5,8 @@
     justify-content: space-between;
     background-color: #9b59b6;
     color: white;
-    height: 45px;
+    height: 5vh;
+    max-height: 60px;
     padding-left: 25px;
     padding-right: 25px;
     border-bottom: 1px solid black;
@@ -31,4 +32,10 @@
 
 .header .log-out:hover {
     cursor: pointer;
+}
+
+@media screen and (max-height:900px) {
+    .header {
+        height: 45px;
+    }
 }

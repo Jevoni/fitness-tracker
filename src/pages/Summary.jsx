@@ -53,8 +53,8 @@ const Summary = () => {
 
     return (
         <Body sx={{ backgroundColor: 'white' }}>
-            <Box sx={{ width: '95%' }}>
-                <Typography sx={{ fontSize: '23px' }} className={`${styles['title']}`}>Summary</Typography>
+            <Typography className={`${styles['title']}`}>Summary</Typography>
+            <Box className={styles['content-container']}>
                 <Box sx={{ display: 'flex', flexDirection: 'column-reverse' }}>
                     {totalWeight?.slice(totalWeight.length - 3, totalWeight.length)?.map((workoutLog) =>
                         <SummaryLog

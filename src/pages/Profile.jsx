@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useContext, useRef, useMemo } from 'react'
-import { Box, Typography, Button } from '@mui/material'
+import React, { useState, useEffect, useContext, useRef } from 'react'
+import { Box, Button } from '@mui/material'
 import DefaultUserPic from '../media/user.png'
 
 import AuthContext from '../context/AuthContext'

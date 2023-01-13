@@ -2,7 +2,6 @@
     height: 40px;
     margin: 10px;
     background-color: white;
-    /* border: 1px solid black; */
     box-shadow: 0px 0px 1.8px 1px;
     display: flex;
     align-items: center;
@@ -46,9 +45,123 @@
     background-color: orange;
 }
 
+.workout-log .vertical-button {
+    cursor: pointer;
+}
+
 .content-container {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
     width: 100%;
+}
+
+.content-container p {
+    font-weight: 325;
+}
+
+.button-container {
+    display: flex;
+}
+
+/* @media screen and (max-width:850px) {
+    .content-container p input {
+        width: 120px;
+    }
+} */
+
+@media screen and (min-width:683px) {
+    .workout-log .vertical-button {
+        display: none;
+    }
+}
+
+@media screen and (max-width:500px) {}
+
+@media screen and (max-width:682px) {
+    .workout-log {
+        height: 50px;
+    }
+
+    .workout-log.inputbox.reverse {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
+    .workout-log.inputbox {
+        height: 70px;
+        padding: 3px;
+        flex-direction: column;
+    }
+
+    .workout-log.inputbox .button-add {
+        height: 20px;
+        align-self: flex-start;
+    }
+
+    .workout-log.inputbox .button-remove {
+        height: 20px;
+    }
+
+    .workout-log.inputbox .button-edit {
+        height: 20px;
+        display: inherit;
+    }
+
+    .button-container {
+        align-self: flex-start;
+    }
+
+    .workout-log .button-edit {
+        display: none;
+    }
+
+    .content-container {
+        justify-content: flex-start;
+    }
+
+    .content-container p {
+        font-size: 13px;
+        display: flex;
+        flex-direction: column;
+        width: 35%;
+        padding-left: 2px;
+        padding-right: 2px;
+    }
+
+    /* .content-container.input .date {
+        width: 30%;
+    } */
+
+    .content-container.input .numbers input {
+        width: 100%;
+    }
+
+    .content-container.input p {
+        width: 40%;
+    }
+
+    .content-container .numbers {
+        width: 20%;
+    }
+
+    .content-container .date {
+        width: 25%;
+    }
+}
+
+@media screen and (min-width:601px) and (max-width:900px) {
+    .content-container p {
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width:900px) {
+    /* .content-container.input .numbers {
+        width: 50%;
+    } */
+
+    /* .content-container.input .numbers input {
+        width: 50%;
+    } */
 }

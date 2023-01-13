@@ -10,6 +10,10 @@
     padding: 0px;
 }
 
+.cardio-log .button-container {
+    display: flex;
+}
+
 .cardio-log .button-add {
     background-color: lightgreen;
     text-transform: none;
@@ -46,9 +50,117 @@
     background-color: orange;
 }
 
+.cardio-log .vertical-button {
+    cursor: pointer;
+}
+
 .content-container {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
     width: 100%;
+}
+
+.content-container p {
+    font-weight: 325;
+}
+
+.button-container {
+    display: flex;
+}
+
+@media screen and (min-width:683px) {
+    .cardio-log .vertical-button {
+        display: none;
+    }
+}
+
+@media screen and (max-width:500px) {}
+
+@media screen and (max-width:682px) {
+    .cardio-log {
+        height: 50px;
+    }
+
+    .cardio-log.inputbox.reverse {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
+    .cardio-log.inputbox {
+        height: 70px;
+        padding: 3px;
+        flex-direction: column;
+    }
+
+    .cardio-log.inputbox .button-add {
+        height: 20px;
+        align-self: flex-start;
+    }
+
+    .cardio-log.inputbox .button-remove {
+        height: 20px;
+    }
+
+    .cardio-log.inputbox .button-edit {
+        height: 20px;
+        display: inherit;
+    }
+
+    .button-container {
+        align-self: flex-start;
+    }
+
+    .cardio-log .button-edit {
+        display: none;
+    }
+
+    .content-container {
+        justify-content: flex-start;
+    }
+
+    .content-container p {
+        font-size: 13px;
+        display: flex;
+        flex-direction: column;
+        width: 35%;
+        padding-left: 2px;
+        padding-right: 2px;
+    }
+
+    /* .content-container.input .date {
+        width: 30%;
+    } */
+
+    .content-container.input .numbers input {
+        width: 100%;
+    }
+
+    .content-container.input p {
+        width: 40%;
+    }
+
+    .content-container .numbers {
+        width: 20%;
+    }
+
+    .content-container .date {
+        width: 25%;
+    }
+}
+
+@media screen and (min-width:601px) and (max-width:900px) {
+    .content-container p {
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width:900px) {
+    /* .content-container.input .numbers {
+        width: 50%;
+    } */
+
+    /* .content-container.input .numbers input {
+        width: 50%;
+    } */
 }

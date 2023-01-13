@@ -49,15 +49,21 @@ const WorkoutInput = ({ setTotalWorkouts }) => {
     }
 
     return (
-        <form className={styles['workout-log']} onSubmit={(e) => onSubmitHandler(e)}>
-            <Box className={styles['content-container']}>
-                <Typography sx={{ fontWeight: 325 }}>Date: <input required type='date' onChange={(e) => setDate(e.target.value)}></input></Typography>
-                <Typography sx={{ fontWeight: 325 }}>Workout: <input required type='text' onChange={(e) => setWorkout(e.target.value)}></input></Typography>
-                <Typography sx={{ fontWeight: 325 }}>Reps: <input required type='number' onChange={(e) => setReps(e.target.value)}></input></Typography>
-                <Typography sx={{ fontWeight: 325 }}>Sets: <input required type='number' onChange={(e) => setSets(e.target.value)}></input></Typography>
+        <form className={`${styles['workout-log']} ${styles.inputbox}`} onSubmit={(e) => onSubmitHandler(e)}>
+            <Box className={`${styles['content-container']} ${styles.input}`}>
+                <Typography className={styles.date}>
+                    Date: <input required type='date' onChange={(e) => setDate(e.target.value)}></input>
+                </Typography>
+                <Typography>Workout: <input required type='text' onChange={(e) => setWorkout(e.target.value)}></input></Typography>
+                <Typography className={`${styles.numbers} `}>
+                    Reps: <input required type='number' onChange={(e) => setReps(e.target.value)}></input>
+                </Typography>
+                <Typography className={`${styles.numbers} `}>
+                    Sets: <input required type='number' onChange={(e) => setSets(e.target.value)}></input>
+                </Typography>
             </Box>
             <Button className={styles['button-add']} type='submit'>Add</Button>
-        </form>
+        </form >
     )
 }
 
