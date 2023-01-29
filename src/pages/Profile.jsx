@@ -53,11 +53,11 @@ const Profile = () => {
                         <Box sx={{ display: 'flex', flexDirection: 'column', width: '70%', height: '85%', alignItems: 'center', }}>
                             <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '30%', width: '100%', marginBottom: '30px' }}>
                                 <Box sx={{ height: '100%', width: '20%', backgroundColor: '#dbc3e4', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', border: '1px solid black' }}>
-                                    <Box component='img' src={DefaultUserPic} height='50%' />
+                                    <Box component='img' src={DefaultUserPic} height='20px' />
                                 </Box>
                             </Box>
                             <Box style={{ display: 'flex', width: '100%', flexDirection: 'column', alignItems: 'center' }}>
-                                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '50%' }}>
+                                <div className={styles.inputbox}>
                                     <label for="firstName">First Name: </label>
                                     <input
                                         readOnly
